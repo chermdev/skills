@@ -1,0 +1,4 @@
+interface:
+  display_name: "Delivery"
+  short_description: "Inspect, plan, and run structured delivery"
+  default_prompt: "Use $delivery to show the current plans, features, blockers, and next action."

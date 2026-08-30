@@ -1,0 +1,46 @@
+contract: delivery/v1
+
+paths:
+  root: .github/plans
+  index: INDEX.md
+  handoff: handoff.md
+  legacy_backlog: null
+
+tracking:
+  initiatives:
+    canonical: git
+    mirrors: []
+  features:
+    canonical: git
+    mirrors: []
+  bugs:
+    canonical: git
+    mirrors: []
+  pull_requests:
+    canonical: git_host
+    mirrors: []
+  handoff:
+    canonical: git
+    mirrors: []
+  evidence:
+    canonical: git
+    mirrors: []
+
+providers: {}
+
+reconciliation:
+  mode: advisory
+  delete_external: false
+  conflict_policy: stop_and_report
+  field_authority: {}
+
+verification:
+  inherit_repository_commands: true
+  commands: []
+  user_facing_qa: when_applicable
+  blocking_review_severities: []
+
+rollout:
+  explicit_authorization: true
+
+pending_external_setup: []
