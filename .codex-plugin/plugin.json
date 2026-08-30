@@ -1,0 +1,29 @@
+{
+  "name": "chermdev-skills",
+  "version": "0.1.0",
+  "description": "A growing collection of independent Agent Skills maintained by chermdev.",
+  "author": {
+    "name": "chermdev",
+    "url": "https://github.com/chermdev"
+  },
+  "homepage": "https://github.com/chermdev/skills",
+  "repository": "https://github.com/chermdev/skills",
+  "keywords": [
+    "agent-skills",
+    "delivery",
+    "software-engineering"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Chermdev Skills",
+    "shortDescription": "Independent workflows for software delivery.",
+    "longDescription": "A maintained collection of independent Agent Skills, beginning with structured multi-session software delivery.",
+    "developerName": "chermdev",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Planning",
+      "Software delivery"
+    ],
+    "defaultPrompt": "Use the delivery skill to inspect this repository's delivery status."
+  }
+}

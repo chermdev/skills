@@ -1,0 +1,16 @@
+{
+  "name": "chermdev-skills",
+  "owner": {
+    "name": "chermdev",
+    "url": "https://github.com/chermdev"
+  },
+  "description": "Independent Agent Skills maintained by chermdev.",
+  "plugins": [
+    {
+      "name": "chermdev-skills",
+      "source": "./",
+      "description": "A growing collection of independent Agent Skills maintained by chermdev.",
+      "category": "Developer Tools"
+    }
+  ]
+}

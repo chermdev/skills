@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "chermdev-skills",
+  "displayName": "Chermdev Skills",
+  "version": "0.1.0",
+  "description": "A growing collection of independent Agent Skills maintained by chermdev.",
+  "author": {
+    "name": "chermdev",
+    "url": "https://github.com/chermdev"
+  },
+  "homepage": "https://github.com/chermdev/skills",
+  "repository": "https://github.com/chermdev/skills",
+  "keywords": [
+    "agent-skills",
+    "delivery",
+    "software-engineering"
+  ],
+  "skills": "./skills/"
+}
