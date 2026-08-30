@@ -133,6 +133,11 @@ def validate_manifests() -> None:
         raise ValidationError("Claude and Codex plugin names differ")
     if codex.get("version") != claude.get("version"):
         raise ValidationError("Claude and Codex plugin versions differ")
+    if codex.get("license") != "MIT" or claude.get("license") != "MIT":
+        raise ValidationError("Claude and Codex plugin licenses must match LICENSE")
+    license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
+    if not license_text.startswith("MIT License\n"):
+        raise ValidationError("LICENSE must contain the MIT License text")
     if codex.get("skills") != "./skills/" or claude.get("skills") != "./skills/":
         raise ValidationError("plugin manifests must point skills at ./skills/")
 

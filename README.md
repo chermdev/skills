@@ -41,4 +41,4 @@ The repository root is the plugin root for both hosts, so every installation mod
 
 Run `./scripts/validate.sh` before committing. It checks skill metadata, internal links, manifests, marketplace entries, and `npx skills add ./ --list`; when the host validators are installed, it also runs Claude Code validation. The Codex plugin validator can be supplied through `CODEX_PLUGIN_VALIDATOR`, and the official skill validator through `SKILL_VALIDATOR`.
 
-No license has been selected. Adding one remains an explicit owner decision.
+Released under the [MIT License](LICENSE).
