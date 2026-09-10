@@ -1,0 +1,4 @@
+interface:
+  display_name: "Apple HIG"
+  short_description: "Find and apply current Apple design guidance"
+  default_prompt: "Use $apple-hig to find current Apple guidance for this design decision and apply it with source links."

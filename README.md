@@ -1,6 +1,9 @@
 # chermdev skills
 
-A canonical collection of independent Agent Skills. The catalog currently contains [`delivery`](skills/delivery/SKILL.md), a structured workflow for multi-session software delivery.
+A canonical collection of independent Agent Skills.
+
+- [`apple-hig`](skills/apple-hig/SKILL.md): Find and apply live Apple Human Interface Guidelines using a linked topic directory, navigation guidance, and checks for relevant changes.
+- [`delivery`](skills/delivery/SKILL.md): A structured workflow for multi-session software delivery.
 
 ## Choose one installation mode
 
@@ -15,7 +18,7 @@ npx skills@latest add chermdev/skills --list
 npx skills@latest add chermdev/skills --skill delivery
 ```
 
-`skills` 1.5.23 has an upstream parsing bug in the equals-sign form: `--skill=delivery` is accepted but can select every skill. It happens to produce the same result while this repository contains only `delivery`, but use the documented space-separated form above as the catalog grows.
+`skills` 1.5.23 has an upstream parsing bug in the equals-sign form: `--skill=delivery` is accepted but can select every skill. Use the documented space-separated form above to select an individual skill.
 
 ### Managed plugin installation
 
