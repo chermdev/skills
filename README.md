@@ -4,6 +4,7 @@ A canonical collection of independent Agent Skills.
 
 - [`apple-hig`](skills/apple-hig/SKILL.md): Find and apply live Apple Human Interface Guidelines using a linked topic directory, navigation guidance, and checks for relevant changes.
 - [`delivery`](skills/delivery/SKILL.md): A structured workflow for multi-session software delivery.
+- [`opengraph-design`](skills/opengraph-design/SKILL.md): Design branded social preview images using existing site assets, deliberate composition, and verified metadata.
 
 ## Choose one installation mode
 

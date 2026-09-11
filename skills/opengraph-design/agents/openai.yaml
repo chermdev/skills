@@ -1,0 +1,4 @@
+interface:
+  display_name: "Open Graph Design"
+  short_description: "Design polished social cards that fit the brand"
+  default_prompt: "Use $opengraph-design to improve this site's social preview using its existing brand and assets, then verify the exported image and metadata."
