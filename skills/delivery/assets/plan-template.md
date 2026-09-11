@@ -1,20 +1,24 @@
 ---
-name: initiative-slug
-title: Initiative title
+plan_id: PLAN-SLUG
+name: plan-slug
+title: Outcome-oriented plan title
 description: One-line outcome
-status: draft
+portfolio_horizon: horizon-slug
+status: proposed
 planning_state: needs_grooming
-rollout_state: not_applicable
+rollout_state: gated
 owner: unassigned
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
+depends_on_plans: []
+required_features: []
 tracker_project: null
 external_refs: []
 ---
 
-# Initiative title
+# Outcome-oriented plan title
 
-## Outcome
+## Outcome and rollout boundary
 
 Describe what users or operators can do when implementation is complete.
 
@@ -34,18 +38,26 @@ Link to durable business, architecture, security, and rollout contracts.
 | Decision | Status | Rationale |
 | -------- | ------ | --------- |
 
-## Feature sequence
+## Feature DAG
 
-| #   | Feature | Visible delivery | Depends on | Parallelizable | Status |
-| --- | ------- | ---------------- | ---------- | -------------- | ------ |
+| Feature | Visible delivery | Depends on | Parallel candidate | Delivery | Planning |
+| ------- | ---------------- | ---------- | ------------------ | -------- | -------- |
 
 ## Critical path
 
-Describe dependency order and genuinely independent branches.
+Describe dependency order and genuinely independent branches. `parallelizable_with` does not
+authorize execution or reserve WIP. Name the contract-freeze record required before any parallel
+window; without an approved current record, execute serially.
 
 ## Rollout
 
 Record gates, safe defaults, migration/deployment order, rollback, and authorization boundary.
+
+## Activation and next eligibility
+
+Record the exact sequence: resolve blocking decisions, reconcile portfolio priority, approve plan
+planning, assign plan owner, activate the plan, then approve/assign only the first dependency-ready
+feature. Do not bulk-promote downstream features.
 
 ## Open decisions
 

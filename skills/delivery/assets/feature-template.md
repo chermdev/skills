@@ -1,16 +1,22 @@
 ---
+feature_id: PLAN-01
+plan: ../PLAN.md
 name: feature-slug
 title: Feature title
 description: One-line independently valuable delivery
-status: draft
+status: not_started
 planning_state: needs_grooming
-rollout_state: not_applicable
+rollout_state: gated
 owner: unassigned
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 depends_on: []
-parallelizable: false
+parallelizable_with: []
+owned_boundary: []
 preferred_environment: current_worktree
+recommended_model: null
+recommended_reasoning_effort: null
+reasoning_rationale: "Pending selection from the repository policy and available host capabilities."
 tracker_issue: null
 external_refs: []
 evidence_record: null
@@ -32,6 +38,9 @@ State one independently valuable outcome and who notices it.
 
 ## Dependencies and rollout safety
 
+State the exact dependency completion condition. Treat `parallelizable_with` as candidate
+compatibility; link an approved freeze record before parallel execution.
+
 ## Implementation steps
 
 ## Business and security rules
@@ -48,14 +57,17 @@ State one independently valuable outcome and who notices it.
 ## Ownership and verification
 
 - Write owner:
-- Owned boundary:
+- Owned boundary by file and function:
+- WIP slot and merge order:
 - Automated checks:
 - User-facing QA:
 - Reviewer:
+- Contract-freeze record when parallel:
 
 ## Progress and completion record
 
 - Current next action:
+- Actual model/effort and any override or host limitation:
 - Implementation commit:
 - Checks:
 - Review:

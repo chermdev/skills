@@ -1,17 +1,31 @@
-contract: delivery/v1
+contract: delivery/v2
+
+terminology:
+  portfolio_horizon: horizon
+  delivery_plan: plan
+  executable_delivery: feature
+  implementation_detail: task
 
 paths:
   root: .github/plans
+  plans: plans
   index: INDEX.md
   handoff: handoff.md
+  archive: archive
   legacy_backlog: null
 
 tracking:
-  initiatives:
+  portfolio_horizons:
+    canonical: git
+    mirrors: []
+  plans:
     canonical: git
     mirrors: []
   features:
     canonical: git
+    mirrors: []
+  tasks:
+    canonical: feature_record_or_pull_request
     mirrors: []
   bugs:
     canonical: git
@@ -28,19 +42,104 @@ tracking:
 
 providers: {}
 
+execution:
+  strategy: dependency_aware_incremental
+  write_owner_scope: feature
+  review_counts_as_wip: true
+  wip_limits:
+    critical_path_features_per_plan: 1
+    independent_features_per_plan: 1
+    total_features_per_plan: 2
+  next_eligibility:
+    - containing_plan_status_is_active
+    - containing_plan_planning_state_is_approved
+    - portfolio_priority_is_reconciled
+    - planning_state_is_approved
+    - status_is_not_started
+    - all_dependencies_are_completed
+    - owner_is_assigned
+    - owned_boundary_is_nonempty
+    - no_wip_limit_would_be_exceeded
+    - parallel_requirements_hold
+  parallel_requires:
+    - dependencies_complete
+    - shared_contracts_frozen
+    - disjoint_physical_ownership
+    - safe_merge_order
+    - independently_verifiable_qa
+
+states:
+  plan_status:
+    allowed: [proposed, active, blocked, completed, canceled, superseded]
+    normal_flow: [proposed->active, active->completed]
+    activation_gate:
+      - plan_planning_state_is_approved
+      - portfolio_priority_is_reconciled
+      - plan_owner_is_assigned
+  feature_status:
+    allowed: [not_started, in_progress, in_review, blocked, completed, canceled, superseded]
+    normal_flow: [not_started->in_progress, in_progress->in_review, in_review->completed]
+  planning_state:
+    allowed: [intake, needs_grooming, ready_for_approval, approved]
+    normal_flow: [intake->needs_grooming, needs_grooming->ready_for_approval, ready_for_approval->approved]
+    regression_requires_reason: true
+  contract_freeze_status:
+    allowed: [draft, approved, superseded]
+    normal_flow: [draft->approved, approved->superseded]
+    approval_gate:
+      - schemas_signatures_and_ddl_are_exact
+      - physical_ownership_has_no_overlap
+      - merge_order_is_explicit
+      - independent_qa_is_defined
+      - all_write_owners_and_required_reviewers_approved
+  rollout_state:
+    allowed: [not_applicable, gated, authorized, released, pending_reconciliation, rolled_back]
+    normal_flow: [gated->authorized, authorized->released, released->rolled_back, rolled_back->authorized, authorized->gated]
+    guards:
+      gated_to_authorized:
+        - explicit_authorization_recorded
+        - release_gate_is_green
+        - exposure_and_recovery_are_documented
+      authorized_to_released:
+        - exposure_is_verified
+        - rollout_evidence_is_recorded
+  completion_gate:
+    - status_is_in_review
+    - definition_of_done_is_complete
+    - verification_is_green
+    - required_reviews_are_complete
+    - no_blocking_review_findings
+
 reconciliation:
   mode: advisory
   delete_external: false
   conflict_policy: stop_and_report
+  one_ticket_per_feature: false
   field_authority: {}
 
 verification:
   inherit_repository_commands: true
   commands: []
   user_facing_qa: when_applicable
-  blocking_review_severities: []
+  review_severities: [p0, p1, p2, p3]
+  blocking_review_severities: [p0, p1]
+  reviews:
+    default:
+      stage_1: [implementation_owner_self_review]
+      stage_2: [qa]
+      require_independent_stage_2: true
+    critical_domains:
+      match_any: [finance, auth, security]
+      stage_1: [architect, domain_specialist]
+      stage_2: [qa]
+      require_independent_stage_2: true
+
+model_selection:
+  policy: repository_or_user_defined
+  fallback: current_host_default
 
 rollout:
   explicit_authorization: true
+  completion_does_not_imply_exposure: true
 
 pending_external_setup: []

@@ -4,10 +4,10 @@
 
 ## Active delivery
 
-- Initiative:
+- Horizon and plan:
 - Feature:
 - Owner and branch/worktree:
-- Implementation status:
+- Planning and delivery status:
 - Rollout state:
 
 ## Runtime
@@ -18,6 +18,7 @@
 
 - Blocker or required decision:
 - Next action:
+- First failed `$delivery next` predicate, when none is eligible:
 
 ## External coordination
 

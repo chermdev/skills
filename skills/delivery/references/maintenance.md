@@ -24,13 +24,18 @@ When a feature's objective, scope, next action, or definition of done becomes ha
 Before handing off or closing:
 
 - every in-progress feature has one owner;
-- dependencies and status agree with the initiative rollup;
+- dependencies and status agree with the plan rollup;
 - implementation and rollout states are not conflated;
+- active feature model/effort recommendations have a specific rationale, follow the current policy, and agree with any rollup; actual execution overrides or host limitations are recorded separately; missing legacy fields are reported without rewriting completed history;
 - the index contains only coarse progress and links;
 - the handoff contains no historical feature journal;
-- migrated legacy items link to their initiative;
+- migrated legacy items link to their plan;
 - no detailed checklist is copied across canonical and rollup files;
 - the immediate next action and any required user decision are explicit.
+- every advertised next feature satisfies the configured eligibility predicate;
+- every active parallel window has an approved, current freeze record and stays within WIP;
+- every completed feature satisfies the configured completion gate;
+- every rollout transition has its required authorization and evidence.
 
 Prefer deleting stale summaries to adding another corrective paragraph.
 

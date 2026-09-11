@@ -1,0 +1,53 @@
+{
+  "skill_name": "delivery",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We have three Linear initiatives named MVP, Growth, and Advanced, twelve projects, and about 160 mixed tickets. The initiatives are broad and never really finish. Set up a durable delivery structure without modifying Linear yet. Explain how you would classify the existing records and show the default hierarchy and canonical-source split.",
+      "expected_output": "A read-only migration proposal using horizons, bounded outcome plans, vertical features, and task detail; it preserves provider provenance, avoids one-ticket-per-feature import, and assigns field-level canonical ownership.",
+      "files": [],
+      "expectations": [
+        "The response uses Horizon -> Outcome plan -> Vertical feature -> Task as the default hierarchy.",
+        "The response classifies provider entities by meaning rather than retaining names such as initiative or project mechanically.",
+        "The response explicitly avoids mutating Linear before authorization and rejects automatic one-ticket-per-feature import.",
+        "The response separates portfolio priority authority from Git-owned executable scope, dependencies, evidence, and rollout."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "$delivery next. PLAN-CHECKOUT is proposed/approved but has no owner and portfolio priority has not been reconciled. CHK-01 is not_started/approved, has no dependencies, and has an assigned feature owner. Start implementing it now.",
+      "expected_output": "The assistant refuses to start writes, evaluates the explicit next-eligibility predicate, and reports the first actionable plan-level gate without silently changing state.",
+      "files": [],
+      "expectations": [
+        "The response does not begin implementation or silently activate the plan.",
+        "The response identifies that the containing plan is not active and also recognizes missing plan ownership or priority reconciliation as eligibility gates.",
+        "The response keeps planning approval distinct from delivery status.",
+        "The response gives a concrete state-transition sequence that would make the feature eligible."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Plan a shared-expense ledger. After the atomic expense feature, timeline, settlements, and active-context capture look parallel. Timeline must display settlement and reversal events, and two branches may touch migrations and shared command types. I want maximum parallelism but no risky merges. Define the DAG, WIP rule, and what must be frozen before execution.",
+      "expected_output": "A dependency-aware feature DAG that owns the shared event contract upstream, treats parallel relations as candidates, limits WIP, and requires an approved contract-freeze record with physical ownership and QA gates.",
+      "files": [],
+      "expectations": [
+        "The response prevents timeline and settlement from running as independent siblings unless the settlement/event contract is owned and frozen upstream.",
+        "The response treats parallelizable_with as candidate compatibility rather than authorization.",
+        "The response requires an approved current freeze record with exact schemas/signatures or DDL, file/function ownership, merge order, and independent QA.",
+        "The response uses the repository WIP policy or, when none exists, defaults to two active features per plan (one critical-path and one independent), counts review as WIP, and falls back to serial execution when freeze conditions are not satisfied."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "$delivery next. The handoff points to PAY-02, which is in_progress/approved and owned by this execution. Its plan is active/approved, priority is reconciled, dependencies are completed, and its physical boundary is assigned. The two-slot WIP limit is full: PAY-02 occupies one slot and another independent feature occupies the other. Their approved contract freeze is current. Resume PAY-02 after the session interruption.",
+      "expected_output": "The assistant resumes the owned feature after rechecking continuation gates, counts its existing WIP slot once, and does not apply the new-work not_started predicate or start another feature.",
+      "files": [],
+      "expectations": [
+        "The response distinguishes resuming owned in_progress work from selecting a new not_started feature.",
+        "The response rechecks approval, plan activation, dependencies, ownership, and applicable parallel-safety gates.",
+        "The response counts the existing WIP slot once and does not reject continuation merely because no new slot is available.",
+        "The response does not reset delivery status, silently transfer ownership, or start another feature."
+      ]
+    }
+  ]
+}

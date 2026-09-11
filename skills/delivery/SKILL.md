@@ -1,6 +1,6 @@
 ---
 name: delivery
-description: Inspect, set up, groom, plan, execute, or audit multi-session software delivery using durable initiative and vertical-feature records, explicit ownership, QA/review gates, automatic checkpoints, and rollout tracked separately. Use for structured initiatives and tracker intake; deployment-only and ordinary single-session changes use other workflows.
+description: Inspect, set up, migrate, groom, plan, execute, or audit multi-session software delivery using portfolio horizons, outcome plans, vertical features, task-level implementation detail, explicit ownership, dependency-aware WIP, QA/review gates, durable checkpoints, and rollout tracked separately. Use whenever work spans sessions, contains several tickets or features, needs tracker reconciliation, or asks what should be built next; deployment-only and ordinary single-session changes use other workflows.
 ---
 
 # Delivery
@@ -11,9 +11,9 @@ Use repository files as shared memory while keeping each execution path small en
 
 The user only needs to remember `$delivery`. Infer a mode from natural language or route an explicit mode:
 
-- `$delivery`: show the read-only delivery dashboard and a numbered action menu. `$delivery list` lists initiatives or features with optional filters, and `$delivery help` explains the interface. Read [interface](references/interface.md).
+- `$delivery`: show the read-only delivery dashboard and a numbered action menu. `$delivery list` lists horizons, plans, or features with optional filters, and `$delivery help` explains the interface. Read [interface](references/interface.md).
 - `$delivery setup`: discover the repository, decide where work is tracked, initialize the local contract, or migrate existing tracker state. Read [setup](references/setup.md).
-- `$delivery plan`: groom an intake initiative or shape an explored outcome into vertical features. Read [planning](references/planning.md).
+- `$delivery plan`: groom an intake plan or shape an explored outcome into vertical features. Read [planning](references/planning.md).
 - `$delivery next`: execute the next approved, unblocked feature. Read [execution](references/execution.md).
 - `$delivery audit`: find local drift or reconcile configured external mirrors without blind bidirectional sync. Read [maintenance](references/maintenance.md).
 
@@ -27,11 +27,15 @@ If no contract exists, run setup only when the user asks to configure delivery o
 
 ## Invariants
 
-- One canonical feature record owns scope, dependencies, implementation progress, checks, review, and completion.
+- Use `Horizon -> Outcome plan -> Vertical feature -> Task` as the default hierarchy. A provider entity named “initiative” maps by meaning: strategic direction becomes a horizon; a bounded outcome becomes a plan.
+- One canonical feature record owns scope, dependencies, implementation progress, checks, review, and completion. Tasks remain implementation detail inside that feature, a pull request, or an explicitly linked sub-ticket.
 - Rollups summarize and link. They do not copy feature checklists or evidence.
+- Feature frontmatter records a recommended model, reasoning effort, and complexity rationale. Apply the repository/user policy and available host capabilities; recommendations do not authorize execution or delegation.
 - `planning_state` describes planning maturity. `status` describes delivery progress. `rollout_state` describes exposure; delivery can be complete while rollout is still gated.
-- One task or worktree owns writes for a feature. Parallel work is limited to independent features or bounded read-only evidence.
+- `$delivery next` selects work only through the repository's explicit eligibility predicate; priority, approval, assignment, or a tracker status alone is insufficient.
+- One task or worktree owns writes for a feature. `parallelizable_with` is candidate compatibility, not permission. Parallel execution also requires dependency completion, an approved shared-contract freeze, disjoint physical ownership, safe merge order, independent QA, and available WIP.
 - Features are vertical deliveries with a visible or operable outcome, not horizontal implementation phases.
+- Completion requires deterministic verification and review gates. Exposure follows its own guarded rollout transitions and explicit authorization.
 - Detailed logs, failed attempts, screenshots, timings, and commit ledgers move to disclosed evidence records when they bury the executable contract.
 - Imported work preserves provider IDs and URLs. Canonical field ownership decides conflicts; timestamps never silently decide them.
 - Production deployment, tenant enablement, external messages, tracker mutations, and other consequential actions still require the authorization implied by the user's request and local rules.

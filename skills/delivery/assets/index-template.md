@@ -1,9 +1,19 @@
-# Implementation plan index
+# Delivery dashboard
 
-## Active initiatives
+## Active execution
 
-| Initiative | Outcome | Planning | Delivery | Rollout | Next feature |
-| ---------- | ------- | -------- | -------- | ------- | ------------ |
+| Plan | Feature | Owner | WIP | Blocker | Next gate |
+| ---- | ------- | ----- | --- | ------- | --------- |
+
+## Plan pipeline
+
+| Plan | Outcome | Horizon | Planning | Delivery | Rollout | Next eligible feature |
+| ---- | ------- | ------- | -------- | -------- | ------- | --------------------- |
+
+## Portfolio horizons
+
+| Horizon | Canonical source | State | Role |
+| ------- | ---------------- | ----- | ---- |
 
 ## Cross-cutting checkpoints
 
