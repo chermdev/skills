@@ -1,0 +1,4 @@
+interface:
+  display_name: "API Design"
+  short_description: "Define reliable and compatible API contracts"
+  default_prompt: "Use $api-design to assess this change and record the decisions and verification it needs."

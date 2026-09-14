@@ -15,10 +15,12 @@ without reclaiming its WIP slot:
 3. Claim the feature before writes: move it to `in_progress` and record owner, base commit, branch/worktree, owned boundary, actual WIP slot, and rollout state. Replace the runtime handoff so it points to this active delivery.
 4. Resolve the feature's model/effort recommendation against current user instructions and host capabilities using [model and effort selection](model-selection.md). Record the actual setting and any override or limitation. Selecting a model does not itself create a task or authorize delegation.
 5. Inspect integration points and unresolved decisions. Stop for a decision only when a reasonable assumption would materially change behavior or scope.
+   Confirm the affected file/contract map and select relevant capabilities through [specialist routing](specialist-routing.md). Preserve local approval and ownership; routing does not dispatch agents or expand scope by itself.
 6. Implement the smallest complete vertical outcome. Keep unrelated user changes untouched.
 7. Verify in proportion to risk using the repository's commands and the feature's definition of done. User-facing changes require outside-in validation of owned states; data/security changes require real boundary and failure-path evidence.
 8. Obtain every configured review stage. The writer fixes accepted findings; the independent final reviewer verifies blocking fixes. Do not complete with unresolved configured blocking severities.
 9. Record a concise verdict, limitations, commands, and commit reference in the feature. Move bulky evidence to a linked record.
+   Tie verification and review to the candidate state and environment. Read command results and failure output before claiming success; distinguish planned/unavailable checks from passes. Reuse valid unchanged evidence explicitly and rerun checks affected by subsequent edits. Specialist findings must be resolved according to configured severities, not merely acknowledged.
 10. Move `in_review -> completed` only when the configured completion gate is true. Set rollout independently—normally remain `gated` until explicit authorization, then follow guarded `authorized -> released` transitions.
 11. Update minimal rollups and replace the short handoff with the next eligible feature, blocker, or required decision. If the workflow records immutable SHAs after commit, use a small coordination-only follow-up rather than amending the reviewed implementation commit.
 

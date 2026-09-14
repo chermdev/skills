@@ -27,6 +27,7 @@ If no contract exists, run setup only when the user asks to configure delivery o
 
 ## Invariants
 
+- Delivery coordinates discipline-specific capabilities without duplicating their methods. Use [specialist routing](references/specialist-routing.md) for affected boundaries; select only relevant installed capabilities and keep each contribution in the canonical feature. Missing optional skills do not require installation or change approval.
 - Use `Horizon -> Outcome plan -> Vertical feature -> Task` as the default hierarchy. A provider entity named “initiative” maps by meaning: strategic direction becomes a horizon; a bounded outcome becomes a plan.
 - One canonical feature record owns scope, dependencies, implementation progress, checks, review, and completion. Tasks remain implementation detail inside that feature, a pull request, or an explicitly linked sub-ticket.
 - Rollups summarize and link. They do not copy feature checklists or evidence.
@@ -41,3 +42,5 @@ If no contract exists, run setup only when the user asks to configure delivery o
 - Production deployment, tenant enablement, external messages, tracker mutations, and other consequential actions still require the authorization implied by the user's request and local rules.
 
 Finish with the repository's canonical state coherent and the immediate next action discoverable without reconstructing the conversation.
+
+For the origin and deliberate adaptation of planning/review techniques, read [sources](references/sources.md).

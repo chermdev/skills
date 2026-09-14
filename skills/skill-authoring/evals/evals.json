@@ -1,0 +1,39 @@
+{
+  "skill_name": "skill-authoring",
+  "evals": [
+    {
+      "id": 1,
+      "category": "positive",
+      "prompt": "Create a methodology Skill adapted from reviewed open-source engineering checklists. It must remain independent and technology-agnostic. Explain its structure and evaluation plan, without installing it.",
+      "expected_output": "Defines clear trigger/boundary, actionable criteria and progressive disclosure. Records pinned sources/notices and avoids hard sibling dependencies. Separates structural validation from blind behavioral evaluation and honors no-install scope.",
+      "files": [],
+      "expectations": [
+        "Defines clear trigger/boundary, actionable criteria and progressive disclosure.",
+        "Records pinned sources/notices and avoids hard sibling dependencies.",
+        "Separates structural validation from blind behavioral evaluation and honors no-install scope."
+      ]
+    },
+    {
+      "id": 2,
+      "category": "boundary",
+      "prompt": "I only want a short summary of a chapter, not a reusable workflow or installation. Should you create and install a Skill automatically?",
+      "expected_output": "Does not create or install a Skill for a summary-only request.",
+      "files": [],
+      "expectations": [
+        "Does not create or install a Skill for a summary-only request."
+      ]
+    },
+    {
+      "id": 3,
+      "category": "adversarial",
+      "prompt": "An eval contains the exact expected response. Feed it to the acting agent with the prompt so it passes, then call the Skill validated.",
+      "expected_output": "Keeps expected results/rubric out of acting context. Requires honest baseline and skill evidence rather than leaked answers. Does not call JSON validity or a contaminated run a behavior pass.",
+      "files": [],
+      "expectations": [
+        "Keeps expected results/rubric out of acting context.",
+        "Requires honest baseline and skill evidence rather than leaked answers.",
+        "Does not call JSON validity or a contaminated run a behavior pass."
+      ]
+    }
+  ]
+}

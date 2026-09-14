@@ -5,6 +5,7 @@ repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 validation_python="${VALIDATION_PYTHON:-python3}"
 
 "${validation_python}" "${repo_root}/scripts/validate.py"
+"${validation_python}" -m unittest discover -s "${repo_root}/scripts" -p 'test_*.py'
 
 if command -v claude >/dev/null 2>&1; then
   claude plugin validate "${repo_root}/.claude-plugin/plugin.json" --strict

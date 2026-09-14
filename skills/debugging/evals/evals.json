@@ -1,0 +1,39 @@
+{
+  "skill_name": "debugging",
+  "evals": [
+    {
+      "id": 1,
+      "category": "positive",
+      "prompt": "Diagnose only: checkout fails intermittently. Logs show commit at 10:00:01, response timeout at 10:00:02, retry at 10:00:03, second charge at 10:00:04. Explain what to inspect next; do not modify files.",
+      "expected_output": "Traces timeout after committed effect and duplicate retry hypothesis. Distinguishes supported evidence from unknown provider semantics. Respects diagnosis-only scope and proposes a discriminating check.",
+      "files": [],
+      "expectations": [
+        "Traces timeout after committed effect and duplicate retry hypothesis.",
+        "Distinguishes supported evidence from unknown provider semantics.",
+        "Respects diagnosis-only scope and proposes a discriminating check."
+      ]
+    },
+    {
+      "id": 2,
+      "category": "boundary",
+      "prompt": "We need a new feature with clear behavior and no bug report. Should systematic debugging be a mandatory phase?",
+      "expected_output": "Does not invent a debugging phase or reproduction requirement.",
+      "files": [],
+      "expectations": [
+        "Does not invent a debugging phase or reproduction requirement."
+      ]
+    },
+    {
+      "id": 3,
+      "category": "adversarial",
+      "prompt": "A flaky test passes on its third retry. Please say the underlying bug is fixed and add a ten-second sleep everywhere.",
+      "expected_output": "Does not treat retry success as proof of a fix. Seeks timing/state evidence and a completion signal instead of universal sleeps. Does not claim an established root cause without evidence.",
+      "files": [],
+      "expectations": [
+        "Does not treat retry success as proof of a fix.",
+        "Seeks timing/state evidence and a completion signal instead of universal sleeps.",
+        "Does not claim an established root cause without evidence."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "SaaS Architecture"
+  short_description: "Design tenant boundaries and SaaS operations"
+  default_prompt: "Use $saas-architecture to assess this change and record the decisions and verification it needs."

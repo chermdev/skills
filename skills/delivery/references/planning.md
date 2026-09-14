@@ -41,3 +41,17 @@ Do not manufacture acceptance criteria or feature boundaries from a vague tracke
 Review recommendations after grooming or material scope changes without changing approval or rollout state. Keep frontmatter canonical; plan tables may summarize it. Follow the repository's documentation language, including frontmatter prose and rationales.
 
 Use `assets/plan-template.md` and `assets/feature-template.md` when creating a new contract. Adapt validation and rollout sections to the stack; do not impose browser or database checks on work that does not have those surfaces.
+
+## Make the executable contract reviewable
+
+Use [specialist routing](specialist-routing.md) to resolve material design, data, tenancy, API or testing uncertainty. Keep the result in existing canonical records; specialist work does not create another plan hierarchy.
+
+Before approving a feature's implementation detail:
+
+- Map its actual create/modify/test files and responsibilities after inspecting the repository. Do not invent exact line numbers or require a frozen full implementation in the plan.
+- State consumed/produced contracts where tasks depend on one another, with exact agreed names and signatures or schemas when known. Check consistency across tasks and features.
+- Map each material acceptance requirement to a task and verification; identify gaps and unsupported assumptions.
+- Give tasks independently understandable outcomes. Include setup and documentation in the delivery that needs them rather than creating horizontal feature phases.
+- Replace vague executable steps such as "add validation" with the rule, boundary, failure behavior and check. An unresolved material contract belongs in open decisions and keeps planning in grooming; it is not hidden behind TODO/TBD in an approved step.
+
+Templates and exploratory plans may contain placeholders. Existing approved/completed records are not invalidated solely for missing new headings; enrich the affected active record proportionately.

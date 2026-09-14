@@ -1,6 +1,6 @@
 {
   "name": "chermdev-skills",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A growing collection of independent Agent Skills maintained by chermdev.",
   "author": {
     "name": "chermdev",
@@ -18,7 +18,7 @@
   "interface": {
     "displayName": "Chermdev Skills",
     "shortDescription": "Independent workflows for software delivery.",
-    "longDescription": "A maintained collection of independent Agent Skills, beginning with structured multi-session software delivery.",
+    "longDescription": "Independent skills for multi-session delivery, agnostic engineering disciplines, design and evidence-based review.",
     "developerName": "chermdev",
     "category": "Developer Tools",
     "capabilities": [

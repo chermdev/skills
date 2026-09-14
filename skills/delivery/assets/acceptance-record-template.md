@@ -12,6 +12,13 @@ Current status, scope, definition of done, blocker, and next action live only in
 
 ## Verification matrix
 
+| Requirement / risk | Check | Candidate / environment | Observed result | Limitation |
+| --- | --- | --- | --- | --- |
+
+## Review and readiness evidence
+
+Record reviewer role, candidate reviewed, findings and corrective verification. Distinguish self-review, independent agent review and human approval. A readiness verdict does not authorize rollout.
+
 ## Failed observations and corrective verification
 
 ## Limitations and remaining debt

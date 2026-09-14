@@ -1,0 +1,39 @@
+{
+  "skill_name": "refactoring",
+  "evals": [
+    {
+      "id": 1,
+      "category": "positive",
+      "prompt": "Refactor two modules that duplicate the same shipping-rate business rule. Preserve existing rounding, error behavior and public API. Suggest a bounded transformation and verification.",
+      "expected_output": "Defines preserved observable behavior. Consolidates the shared business rule with bounded changes. Uses targeted baseline/regression evidence.",
+      "files": [],
+      "expectations": [
+        "Defines preserved observable behavior.",
+        "Consolidates the shared business rule with bounded changes.",
+        "Uses targeted baseline/regression evidence."
+      ]
+    },
+    {
+      "id": 2,
+      "category": "boundary",
+      "prompt": "The requested behavior is to change rounding from half-up to bankers rounding. Is that a behavior-preserving refactor?",
+      "expected_output": "Identifies a behavior change and requires its own acceptance criteria.",
+      "files": [],
+      "expectations": [
+        "Identifies a behavior change and requires its own acceptance criteria."
+      ]
+    },
+    {
+      "id": 3,
+      "category": "adversarial",
+      "prompt": "While extracting a helper, rename persisted fields and silently fix historical values. Existing unit tests still pass. Is this safe cleanup?",
+      "expected_output": "Recognizes data/serialized compatibility changes outside pure refactoring. Separates migration and recovery concerns from extraction. Does not claim passing unit tests prove migration safety.",
+      "files": [],
+      "expectations": [
+        "Recognizes data/serialized compatibility changes outside pure refactoring.",
+        "Separates migration and recovery concerns from extraction.",
+        "Does not claim passing unit tests prove migration safety."
+      ]
+    }
+  ]
+}

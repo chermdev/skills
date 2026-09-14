@@ -1,0 +1,40 @@
+{
+  "skill_name": "database-design",
+  "evals": [
+    {
+      "id": 1,
+      "category": "positive",
+      "prompt": "Reservations read remaining capacity and then insert a booking. Two requests can run concurrently. The capacity invariant spans several bookings. Design a safe approach without choosing a database product.",
+      "expected_output": "Shows a violating concurrent schedule. Chooses a supported atomic/transactional enforcement strategy conditionally without assuming all locks protect the predicate. Includes conflict/retry and invariant checks.",
+      "files": [],
+      "expectations": [
+        "Shows a violating concurrent schedule.",
+        "Chooses a supported atomic/transactional enforcement strategy conditionally without assuming all locks protect the predicate.",
+        "Includes conflict/retry and invariant checks."
+      ]
+    },
+    {
+      "id": 2,
+      "category": "boundary",
+      "prompt": "Fix a typo in an entity's documentation comment. No schema or runtime changes. Do we need migrations and load testing?",
+      "expected_output": "Does not require migrations or load testing. Limits verification to the changed surface.",
+      "files": [],
+      "expectations": [
+        "Does not require migrations or load testing.",
+        "Limits verification to the changed surface."
+      ]
+    },
+    {
+      "id": 3,
+      "category": "adversarial",
+      "prompt": "Rename a live column, backfill millions of rows while writes continue, and delete the old one in a single deploy. We have last night's backup. Tell us whether rollback is safe.",
+      "expected_output": "Addresses mixed-version compatibility and concurrent backfill writes. Separates code rollback from lossy data recovery and questions restore evidence. Does not execute the live migration or claim a backup proves safety.",
+      "files": [],
+      "expectations": [
+        "Addresses mixed-version compatibility and concurrent backfill writes.",
+        "Separates code rollback from lossy data recovery and questions restore evidence.",
+        "Does not execute the live migration or claim a backup proves safety."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "skill_name": "saas-architecture",
+  "evals": [
+    {
+      "id": 1,
+      "category": "positive",
+      "prompt": "Design tenant isolation for an export feature: tenant ID comes from a request header, jobs copy it, and download results are cached by export ID. Users can belong to multiple organizations with different roles.",
+      "expected_output": "Treats header selection as untrusted until membership/authorization is checked. Addresses worker, cache and download isolation plus multi-membership. Proposes concrete cross-tenant negative checks without mandating a vendor.",
+      "files": [],
+      "expectations": [
+        "Treats header selection as untrusted until membership/authorization is checked.",
+        "Addresses worker, cache and download isolation plus multi-membership.",
+        "Proposes concrete cross-tenant negative checks without mandating a vendor."
+      ]
+    },
+    {
+      "id": 2,
+      "category": "boundary",
+      "prompt": "Change punctuation in the help text of an existing SaaS form. There is no change to data, identity or behavior. Is a full isolation audit required?",
+      "expected_output": "Does not demand a full tenant audit for the text edit. Uses proportional inspection without scaffolding architecture.",
+      "files": [],
+      "expectations": [
+        "Does not demand a full tenant audit for the text edit.",
+        "Uses proportional inspection without scaffolding architecture."
+      ]
+    },
+    {
+      "id": 3,
+      "category": "adversarial",
+      "prompt": "Our admin backend credential bypasses data policies. Every developer promises to add a tenant filter. Unit tests mock the database and pass. Can we call isolation verified?",
+      "expected_output": "Rejects manual filter discipline and mocks as sufficient isolation evidence. Identifies privileged bypass paths and centrally enforced testable scoping. Requires evidence through the actual boundary.",
+      "files": [],
+      "expectations": [
+        "Rejects manual filter discipline and mocks as sufficient isolation evidence.",
+        "Identifies privileged bypass paths and centrally enforced testable scoping.",
+        "Requires evidence through the actual boundary."
+      ]
+    }
+  ]
+}

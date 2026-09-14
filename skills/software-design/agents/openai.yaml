@@ -1,0 +1,4 @@
+interface:
+  display_name: "Software Design"
+  short_description: "Choose boundaries that reduce change cost"
+  default_prompt: "Use $software-design to assess this change and record the decisions and verification it needs."

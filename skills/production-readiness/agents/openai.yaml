@@ -1,0 +1,4 @@
+interface:
+  display_name: "Production Readiness"
+  short_description: "Assess release evidence and recovery paths"
+  default_prompt: "Use $production-readiness to assess this change and record the evidence and next action."

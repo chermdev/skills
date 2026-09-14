@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Authoring"
+  short_description: "Turn engineering knowledge into tested guidance"
+  default_prompt: "Use $skill-authoring to work on this request with a scoped decision and verification record."

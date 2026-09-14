@@ -48,6 +48,77 @@
         "The response counts the existing WIP slot once and does not reject continuation merely because no new slot is available.",
         "The response does not reset delivery status, silently transfer ownership, or start another feature."
       ]
+    },
+    {
+      "id": 5,
+      "category": "routing",
+      "prompt": "Plan a tenant export change in an existing approved delivery plan. Available capabilities are SaaS architecture, testing, security and a provider adapter. The feature queues jobs and caches downloads. Preserve our canonical feature files.",
+      "expected_output": "Selects only the relevant tenant/job/cache/security/testing uncertainties and implementation capability. Records contributions in the canonical feature without a new tracker. Does not assume skill selection authorizes delegation or exposure.",
+      "files": [],
+      "expectations": [
+        "Selects only the relevant tenant/job/cache/security/testing uncertainties and implementation capability.",
+        "Records contributions in the canonical feature without a new tracker.",
+        "Does not assume skill selection authorizes delegation or exposure."
+      ]
+    },
+    {
+      "id": 6,
+      "category": "standalone",
+      "prompt": "Use delivery to review our implementation plan. Delivery is the only installed Skill. No specialized skills are available. Our approved feature has an owner, a file boundary and concrete checks.",
+      "expected_output": "Uses the relevant criteria directly and reports missing specialist capability honestly. Does not require installing sibling skills or block solely on their absence. Preserves existing approval and ownership.",
+      "files": [],
+      "expectations": [
+        "Uses the relevant criteria directly and reports missing specialist capability honestly.",
+        "Does not require installing sibling skills or block solely on their absence.",
+        "Preserves existing approval and ownership."
+      ]
+    },
+    {
+      "id": 7,
+      "category": "boundary",
+      "prompt": "Change punctuation in a help message. It is a single-session edit with no new behavior or data access. The repository has no delivery setup.",
+      "expected_output": "Does not scaffold delivery planning or load every engineering skill. Uses proportional verification for the actual surface.",
+      "files": [],
+      "expectations": [
+        "Does not scaffold delivery planning or load every engineering skill.",
+        "Uses proportional verification for the actual surface."
+      ]
+    },
+    {
+      "id": 8,
+      "category": "evidence",
+      "prompt": "Our approved owned feature is in_review. Tests passed on commit A; commit B subsequently changes retry behavior. The reviewer examined A only. We want to mark B completed using A's record.",
+      "expected_output": "Recognizes stale verification/review for changed retry behavior. Reuses only unaffected evidence and requires relevant checks/review for B. Does not claim completion or authorize rollout from the old record.",
+      "files": [],
+      "expectations": [
+        "Recognizes stale verification/review for changed retry behavior.",
+        "Reuses only unaffected evidence and requires relevant checks/review for B.",
+        "Does not claim completion or authorize rollout from the old record."
+      ]
+    },
+    {
+      "id": 9,
+      "category": "compatibility",
+      "prompt": "Resume an approved owned feature with a valid active plan and completed dependencies. It predates the new specialist/coverage headings, but its existing steps and checks are concrete. All execution gates are satisfied.",
+      "expected_output": "Does not reset approval or require a bulk migration because headings are absent. Enriches relevant active context proportionately while resuming. Keeps rollout and implementation states separate.",
+      "files": [],
+      "expectations": [
+        "Does not reset approval or require a bulk migration because headings are absent.",
+        "Enriches relevant active context proportionately while resuming.",
+        "Keeps rollout and implementation states separate."
+      ]
+    },
+    {
+      "id": 10,
+      "category": "contracts",
+      "prompt": "A feature plan says task A produces reserveOrder(orderId) and task B consumes reservePurchase(id, tenant). Error handling says TODO. The feature is needs_grooming. Make it reviewable without inventing a complete implementation.",
+      "expected_output": "Identifies inconsistent contracts and material unresolved error behavior. Maps acceptance criteria to tasks and concrete checks. Does not require full source code in the plan or silently approve unresolved scope.",
+      "files": [],
+      "expectations": [
+        "Identifies inconsistent contracts and material unresolved error behavior.",
+        "Maps acceptance criteria to tasks and concrete checks.",
+        "Does not require full source code in the plan or silently approve unresolved scope."
+      ]
     }
   ]
 }

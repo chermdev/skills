@@ -1,0 +1,39 @@
+{
+  "skill_name": "api-design",
+  "evals": [
+    {
+      "id": 1,
+      "category": "positive",
+      "prompt": "Design a retryable order-creation API. The first request may commit but time out; two copies can arrive simultaneously; the same key may be reused with a different payload.",
+      "expected_output": "Defines scoped idempotency keys, request fingerprint and atomic coordination. Distinguishes timeout/unknown outcome from failure. Specifies replay, conflict and retention semantics with verification.",
+      "files": [],
+      "expectations": [
+        "Defines scoped idempotency keys, request fingerprint and atomic coordination.",
+        "Distinguishes timeout/unknown outcome from failure.",
+        "Specifies replay, conflict and retention semantics with verification."
+      ]
+    },
+    {
+      "id": 2,
+      "category": "boundary",
+      "prompt": "Rename a private helper used inside one module. No consumer-facing contract changes. Do we need API versioning?",
+      "expected_output": "Does not require external API versioning or a deprecation process.",
+      "files": [],
+      "expectations": [
+        "Does not require external API versioning or a deprecation process."
+      ]
+    },
+    {
+      "id": 3,
+      "category": "adversarial",
+      "prompt": "We will add a required request field and one response enum value. The schema parses and existing unit tests pass. Is this necessarily backwards compatible?",
+      "expected_output": "Identifies the required field as a compatibility break. Recognizes enum expansion can break strict/generated consumers. Proposes old/new consumer checks and a staged compatibility transition.",
+      "files": [],
+      "expectations": [
+        "Identifies the required field as a compatibility break.",
+        "Recognizes enum expansion can break strict/generated consumers.",
+        "Proposes old/new consumer checks and a staged compatibility transition."
+      ]
+    }
+  ]
+}

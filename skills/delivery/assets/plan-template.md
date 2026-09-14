@@ -45,6 +45,8 @@ Link to durable business, architecture, security, and rollout contracts.
 
 ## Critical path
 
+Keep specialist decisions in the canonical feature or linked architecture contract. Record the relevant capabilities and unresolved cross-feature contracts without creating another tracker.
+
 Describe dependency order and genuinely independent branches. `parallelizable_with` does not
 authorize execution or reserve WIP. Name the contract-freeze record required before any parallel
 window; without an approved current record, execute serially.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Software Testing"
+  short_description: "Choose tests by behavior, boundary and risk"
+  default_prompt: "Use $software-testing to assess this change and record the evidence and next action."

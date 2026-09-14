@@ -43,6 +43,25 @@ compatibility; link an approved freeze record before parallel execution.
 
 ## Implementation steps
 
+For each meaningful task, state its deliverable, affected files, consumed/produced contracts when relevant, and the check that proves the outcome. Do not duplicate the full implementation in the plan.
+
+## Affected files and contracts
+
+| File or boundary | Create/modify/check | Responsibility | Consumes / produces |
+| --- | --- | --- | --- |
+
+## Acceptance coverage
+
+| Requirement or invariant | Task | Verification and expected observation |
+| --- | --- | --- |
+
+## Specialist contributions
+
+Record only applicable capabilities; this is not a requirement to load every skill.
+
+| Capability | Purpose | Decision / finding | Evidence / limitation |
+| --- | --- | --- | --- |
+
 ## Business and security rules
 
 ## Definition of done
@@ -70,6 +89,7 @@ compatibility; link an approved freeze record before parallel execution.
 - Actual model/effort and any override or host limitation:
 - Implementation commit:
 - Checks:
+- Verified candidate and environment:
 - Review:
 - Rollout state:
 - Follow-up debt:

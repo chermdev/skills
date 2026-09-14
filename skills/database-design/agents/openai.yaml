@@ -1,0 +1,4 @@
+interface:
+  display_name: "Database Design"
+  short_description: "Model invariants, concurrency and safe change"
+  default_prompt: "Use $database-design to assess this change and record the decisions and verification it needs."

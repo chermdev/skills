@@ -1,0 +1,4 @@
+interface:
+  display_name: "Debugging"
+  short_description: "Trace failures and test bounded hypotheses"
+  default_prompt: "Use $debugging to assess this change and record the evidence and next action."

@@ -1,0 +1,39 @@
+{
+  "skill_name": "distributed-systems",
+  "evals": [
+    {
+      "id": 1,
+      "category": "positive",
+      "prompt": "A consumer records an event ID locally, calls an external provider, then marks completion. It can crash before or after the external call. Design retry and reconciliation semantics.",
+      "expected_output": "Examines loss and duplication crash windows. Does not claim local deduplication guarantees exactly-once external effects. Defines provider idempotency or reconciliation/unknown state and failure tests.",
+      "files": [],
+      "expectations": [
+        "Examines loss and duplication crash windows.",
+        "Does not claim local deduplication guarantees exactly-once external effects.",
+        "Defines provider idempotency or reconciliation/unknown state and failure tests."
+      ]
+    },
+    {
+      "id": 2,
+      "category": "boundary",
+      "prompt": "One local transactional store handles a low-volume atomic operation. There is no cross-process effect. Should we add a queue and distributed locks for future scale?",
+      "expected_output": "Keeps the local operation simple absent demonstrated requirements. Names a trigger for revisiting rather than introducing speculative infrastructure.",
+      "files": [],
+      "expectations": [
+        "Keeps the local operation simple absent demonstrated requirements.",
+        "Names a trigger for revisiting rather than introducing speculative infrastructure."
+      ]
+    },
+    {
+      "id": 3,
+      "category": "adversarial",
+      "prompt": "A worker's distributed lock expires, a new worker acquires it, and the old worker continues writing. Does the lock guarantee exclusive writes?",
+      "expected_output": "Recognizes stale ownership and lack of exclusivity after expiry. Evaluates fencing/conditional writes and the actual resource enforcement.",
+      "files": [],
+      "expectations": [
+        "Recognizes stale ownership and lack of exclusivity after expiry.",
+        "Evaluates fencing/conditional writes and the actual resource enforcement."
+      ]
+    }
+  ]
+}

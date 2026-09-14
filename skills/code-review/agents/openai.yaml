@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Review"
+  short_description: "Review changes against contracts and evidence"
+  default_prompt: "Use $code-review to work on this request with a scoped decision and verification record."

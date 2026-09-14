@@ -113,6 +113,56 @@ def validate_links() -> None:
                 raise ValidationError(
                     f"{path.relative_to(ROOT)}: broken internal link {raw_target!r}"
                 )
+            if path.is_relative_to(SKILLS_ROOT):
+                skill_root = SKILLS_ROOT / path.relative_to(SKILLS_ROOT).parts[0]
+                if not resolved.is_relative_to(skill_root):
+                    raise ValidationError(
+                        f"{path.relative_to(ROOT)}: skill resource must be portable: {raw_target!r}"
+                    )
+
+
+def validate_evals(skill_files: list[Path]) -> int:
+    """Check scenario integrity, without claiming that an agent passed the scenarios."""
+    count = 0
+    for skill_file in skill_files:
+        path = skill_file.parent / "evals/evals.json"
+        if not path.exists():
+            continue
+        source = str(path.relative_to(ROOT))
+        payload = load_json(path)
+        if payload.get("skill_name") != frontmatter(skill_file).get("name"):
+            raise ValidationError(f"{source}: skill_name must match the skill")
+        cases = payload.get("evals")
+        if not isinstance(cases, list) or not cases:
+            raise ValidationError(f"{source}: evals must be a non-empty array")
+        ids: set[int] = set()
+        for case in cases:
+            if not isinstance(case, dict):
+                raise ValidationError(f"{source}: each eval must be an object")
+            case_id = case.get("id")
+            if type(case_id) is not int or case_id < 1 or case_id in ids:
+                raise ValidationError(f"{source}: eval IDs must be unique positive integers")
+            ids.add(case_id)
+            require_string(case, "prompt", source)
+            require_string(case, "expected_output", source)
+            expectations = case.get("expectations")
+            if not isinstance(expectations, list) or not expectations or any(
+                not isinstance(item, str) or not item.strip() for item in expectations
+            ):
+                raise ValidationError(f"{source}: expectations must be non-empty strings")
+            fixtures = case.get("files")
+            if not isinstance(fixtures, list):
+                raise ValidationError(f"{source}: files must be an array")
+            for fixture in fixtures:
+                if not isinstance(fixture, str) or not fixture:
+                    raise ValidationError(f"{source}: fixture paths must be non-empty strings")
+                resolved = (skill_file.parent / fixture).resolve()
+                if not resolved.is_relative_to(skill_file.parent.resolve()) or not resolved.is_file():
+                    raise ValidationError(f"{source}: fixture missing or outside skill: {fixture!r}")
+                if resolved.is_relative_to(path.parent.resolve()):
+                    raise ValidationError(f"{source}: acting fixture cannot be an eval rubric")
+            count += 1
+    return count
 
 
 def require_string(payload: dict[str, object], key: str, source: str) -> str:
@@ -170,10 +220,12 @@ def main() -> int:
         skill_files = validate_skills()
         validate_links()
         validate_manifests()
+        eval_count = validate_evals(skill_files)
     except ValidationError as error:
         print(f"validation failed: {error}", file=sys.stderr)
         return 1
-    print(f"repository validation passed ({len(skill_files)} skill)")
+    print(f"repository validation passed ({len(skill_files)} skills, {eval_count} eval cases)")
+    print("structural validation only; behavioral scenarios are not executed by this command")
     return 0
 
 

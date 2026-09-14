@@ -1,0 +1,4 @@
+interface:
+  display_name: "Security Review"
+  short_description: "Review trust boundaries with concrete evidence"
+  default_prompt: "Use $security-review to assess this change and record the evidence and next action."
