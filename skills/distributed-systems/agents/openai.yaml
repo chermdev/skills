@@ -1,0 +1,4 @@
+interface:
+  display_name: "Distributed Systems"
+  short_description: "Reason about partial failure and consistency"
+  default_prompt: "Use $distributed-systems to work on this request with a scoped decision and verification record."

@@ -1,0 +1,39 @@
+{
+  "skill_name": "software-design",
+  "evals": [
+    {
+      "id": 1,
+      "category": "positive",
+      "prompt": "A two-person team has a functional monolith. Pricing rules are duplicated in checkout and invoicing; tax changes require editing both. Propose a design for the next tax rule without rewriting the app.",
+      "expected_output": "Identifies shared pricing knowledge and an explicit owner. Preserves the functional paradigm and current deployment unless evidence justifies changing it. Provides a representative integration path and verification.",
+      "files": [],
+      "expectations": [
+        "Identifies shared pricing knowledge and an explicit owner.",
+        "Preserves the functional paradigm and current deployment unless evidence justifies changing it.",
+        "Provides a representative integration path and verification."
+      ]
+    },
+    {
+      "id": 2,
+      "category": "boundary",
+      "prompt": "The requested change is renaming one internal local variable to match our convention. Should we introduce a layered architecture first?",
+      "expected_output": "Does not require an architecture overhaul or new layers. Keeps the task local and uses proportional verification.",
+      "files": [],
+      "expectations": [
+        "Does not require an architecture overhaul or new layers.",
+        "Keeps the task local and uses proportional verification."
+      ]
+    },
+    {
+      "id": 3,
+      "category": "adversarial",
+      "prompt": "Billing and shipping both have Customer records but mean payer and delivery recipient respectively. Consolidate them into one shared model because DRY is mandatory.",
+      "expected_output": "Recognizes different domain meanings and does not merge by name alone. Explains shared ownership/coupling trade-offs with an alternative.",
+      "files": [],
+      "expectations": [
+        "Recognizes different domain meanings and does not merge by name alone.",
+        "Explains shared ownership/coupling trade-offs with an alternative."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "skill_name": "production-readiness",
+  "evals": [
+    {
+      "id": 1,
+      "category": "positive",
+      "prompt": "Assess a release with a database migration and one outbound payment dependency. Tests pass on the prior revision. The current revision changes retries. We have a backup but no restore rehearsal; deployment is not authorized.",
+      "expected_output": "Requires retry/idempotency and current candidate evidence. Separates backup existence from recovery evidence. Gives a scoped verdict and keeps exposure unauthorized.",
+      "files": [],
+      "expectations": [
+        "Requires retry/idempotency and current candidate evidence.",
+        "Separates backup existence from recovery evidence.",
+        "Gives a scoped verdict and keeps exposure unauthorized."
+      ]
+    },
+    {
+      "id": 2,
+      "category": "boundary",
+      "prompt": "Assess a documentation-only release with no runtime or schema change. Should we block it until canary, chaos and multi-region testing exist?",
+      "expected_output": "Does not impose universal enterprise operational controls. Uses the applicable documentation/release checks.",
+      "files": [],
+      "expectations": [
+        "Does not impose universal enterprise operational controls.",
+        "Uses the applicable documentation/release checks."
+      ]
+    },
+    {
+      "id": 3,
+      "category": "adversarial",
+      "prompt": "Our worker retries a timed-out external charge forever, including during outages. Unit tests pass and the deploy button is enabled. Can we release?",
+      "expected_output": "Identifies uncertain external effects and unbounded retry/overload risk. Calls for bounded retries plus idempotency/reconciliation and evidence. Does not equate deploy availability or unit tests with readiness/authorization.",
+      "files": [],
+      "expectations": [
+        "Identifies uncertain external effects and unbounded retry/overload risk.",
+        "Calls for bounded retries plus idempotency/reconciliation and evidence.",
+        "Does not equate deploy availability or unit tests with readiness/authorization."
+      ]
+    }
+  ]
+}

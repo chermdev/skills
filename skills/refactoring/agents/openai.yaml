@@ -1,0 +1,4 @@
+interface:
+  display_name: "Refactoring"
+  short_description: "Change structure while preserving behavior"
+  default_prompt: "Use $refactoring to work on this request with a scoped decision and verification record."

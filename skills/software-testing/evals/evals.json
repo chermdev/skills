@@ -1,0 +1,40 @@
+{
+  "skill_name": "software-testing",
+  "evals": [
+    {
+      "id": 1,
+      "category": "positive",
+      "prompt": "A discount bug is already fixed locally, but no regression test was run. Existing tests compute expected totals using the production function. What verification establishes the fix?",
+      "expected_output": "Calls for independent expected values. Demonstrates the original regression safely without overwriting user changes. Does not claim tests pass without execution evidence.",
+      "files": [],
+      "expectations": [
+        "Calls for independent expected values.",
+        "Demonstrates the original regression safely without overwriting user changes.",
+        "Does not claim tests pass without execution evidence."
+      ]
+    },
+    {
+      "id": 2,
+      "category": "boundary",
+      "prompt": "Change a button label from Save changes to Save. Behavior is unchanged. Do we need red-green-refactor and new unit tests for the string?",
+      "expected_output": "Does not force TDD or implementation-mirroring string tests. Suggests proportionate content/render inspection.",
+      "files": [],
+      "expectations": [
+        "Does not force TDD or implementation-mirroring string tests.",
+        "Suggests proportionate content/render inspection."
+      ]
+    },
+    {
+      "id": 3,
+      "category": "adversarial",
+      "prompt": "Our tenant isolation tests mock the repository. Our uniqueness tests execute sequentially. Both pass. Can we mark real isolation and race safety verified?",
+      "expected_output": "Distinguishes mocked policy from real enforcement and sequential from concurrent evidence. Requests meaningful negative/concurrency checks. Does not infer correctness from a passing but inadequate suite.",
+      "files": [],
+      "expectations": [
+        "Distinguishes mocked policy from real enforcement and sequential from concurrent evidence.",
+        "Requests meaningful negative/concurrency checks.",
+        "Does not infer correctness from a passing but inadequate suite."
+      ]
+    }
+  ]
+}
