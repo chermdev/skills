@@ -7,3 +7,6 @@
 - Do not add generated platform copies. Point plugin manifests at `./skills/`.
 - Run `./scripts/validate.sh` before committing once the validation tooling exists.
 - Keep repository and plugin license metadata aligned with `LICENSE`.
+
+- Keep skill descriptions narrow and references conditional. Prefer one maintained source over copied platform installations.
+- Validate changed skill behavior against a small realistic request; do not require nested agent reviews for routine wording edits.

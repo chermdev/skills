@@ -1,27 +1,56 @@
 # Execution
 
-First check the handoff for work already owned by the current execution. Resume an `in_progress`
-feature, or continue the configured review for an `in_review` feature, after confirming approval,
-plan activation, dependencies, ownership, and any applicable parallel gates remain valid. Its
-existing WIP slot counts once. Do not apply the new-work `not_started` predicate to a continuation,
-reset its status, or claim another owner's work without an authorized ownership transfer. A
-`blocked` feature resumes only after its blocker is resolved and its recorded prior state is restored.
+Read the current handoff first. Resume work already owned by this task; do not reset its status,
+count its WIP slot twice, or take another writer's boundary. Resolve a recorded blocker before
+restoring the prior execution state. Read current facts rather than reconstructing old conversations.
 
-For new work, use the following sequence; a validated continuation resumes at the relevant step
-without reclaiming its WIP slot:
+## Coordinator
 
-1. Read the horizon, plan, canonical feature, linked contracts, index, and current handoff. Apply the repository's configured `$delivery next` predicate. By default, the containing plan must be `active / approved` with priority reconciled; the feature must be `not_started / approved`, have all dependencies `completed`, an assigned owner and non-empty physical boundary, satisfy WIP, and meet every applicable parallel requirement. If any condition fails, report the first actionable gate instead of silently promoting state.
-2. When parallel execution is proposed, require an `approved` contract-freeze record that covers every feature in the window, exact shared schemas/signatures/DDL, ownership by file and function, merge order, independent QA, and current approvals. Treat a missing or superseded freeze as serial execution.
-3. Claim the feature before writes: move it to `in_progress` and record owner, base commit, branch/worktree, owned boundary, actual WIP slot, and rollout state. Replace the runtime handoff so it points to this active delivery.
-4. Resolve the feature's model/effort recommendation against current user instructions and host capabilities using [model and effort selection](model-selection.md). Record the actual setting and any override or limitation. Selecting a model does not itself create a task or authorize delegation.
-5. Inspect integration points and unresolved decisions. Stop for a decision only when a reasonable assumption would materially change behavior or scope.
-6. Implement the smallest complete vertical outcome. Keep unrelated user changes untouched.
-7. Verify in proportion to risk using the repository's commands and the feature's definition of done. User-facing changes require outside-in validation of owned states; data/security changes require real boundary and failure-path evidence.
-8. Obtain every configured review stage. The writer fixes accepted findings; the independent final reviewer verifies blocking fixes. Do not complete with unresolved configured blocking severities.
-9. Record a concise verdict, limitations, commands, and commit reference in the feature. Move bulky evidence to a linked record.
-10. Move `in_review -> completed` only when the configured completion gate is true. Set rollout independently—normally remain `gated` until explicit authorization, then follow guarded `authorized -> released` transitions.
-11. Update minimal rollups and replace the short handoff with the next eligible feature, blocker, or required decision. If the workflow records immutable SHAs after commit, use a small coordination-only follow-up rather than amending the reviewed implementation commit.
+- Check the manifest, plan rollup and selected feature for approval, plan activation, reconciled
+  priority, complete dependencies, ownership and WIP. Open horizon/provider records only when those
+  facts are missing or stale. Report the first actionable failed gate; selection does not grant approval.
+- For parallel work, require the configured contract freeze, disjoint physical ownership, safe merge
+  order and independent QA/runtime access. A missing freeze means serial execution, not a new blocker
+  for otherwise eligible serial work. Honor an explicit shared-checkout/device override.
+- Dispatch a compact assignment: outcome, owned boundary, feature path, necessary contracts,
+  acceptance states, execution settings and runtime restrictions. Preserve one visible task per feature
+  when requested; resume its existing task for fixes. Use native completion/blocker events.
+- Verify the returned commit, acceptance evidence and limitations. Reopen only a disputed claim or
+  missing requirement; do not repeat the owner's entire discovery and QA. Update minimal rollups.
 
-Maintain the handoff automatically at ownership changes, meaningful pauses, blockers, and completion. Progress detail belongs in the feature; the handoff is only the restart checkpoint.
+## Feature owner
 
-Do not deploy, enable tenants, mutate production, or update external trackers unless the request and repository rules authorize those actions.
+1. Read the canonical feature and relevant contract sections; use already loaded instructions.
+   Confirm the coordinator's eligibility facts and current ownership. Do not reread the portfolio.
+2. Before writes, record `in_progress`, one owner, base commit, branch/worktree, physical boundary,
+   WIP and rollout. Resolve actual model/effort using [model selection](model-selection.md) only
+   when selecting/changing settings or when the recorded setting cannot be applied.
+3. Inspect integration points and define a finite acceptance matrix. UI work identifies the affected
+   journey and required visual/interaction states; persistence/security work identifies actual boundary
+   and failure cases. Separate an unrelated discovered feature instead of silently expanding scope.
+4. Implement the smallest complete outcome. Batch independent reads and checks; return targeted
+   excerpts and failure summaries. Keep full logs and captures in artifacts. Preserve unrelated work.
+5. Run the repository's required checks for the changed behavior. Reuse the existing runtime. Prepare
+   short UI action sequences and inspect meaningful transitions, final states and failures; do not
+   capture/dump the entire interface after every action. Respect an explicit tool preference.
+6. Obtain the configured review for this risk. Reviewers get a fixed diff/commit, the invariant to
+   inspect and existing evidence. They remain read-only unless assigned a fix and do not recursively
+   delegate. Routine localized changes may use owner verification where the local policy permits;
+   substantial features retain independent QA; critical changes retain domain/architecture and QA.
+7. Fix accepted findings and recheck the affected invariant and changed diff. Broaden tests/review only
+   if the fix changes broader behavior, invalidates evidence or exposes a new risk. Do not rerun an
+   unchanged full suite merely because a new reviewer joined.
+8. Record a concise verdict, commands/results with source revision, inspected evidence and limitations.
+   Move `in_review -> completed` only when every applicable gate is satisfied and blocking findings
+   are resolved. Keep rollout separate and normally `gated`; completion does not authorize deployment.
+9. Report completion or a concrete blocker, release ownership/runtime and update the short handoff.
+   Bulky logs and historical attempts stay in linked evidence, not in the executable feature contract.
+
+If attempts repeat without a changed implementation, new evidence or a narrower hypothesis, reassess
+the boundary and approach. A checkpoint is a reason to change strategy, not a blind token cap or an
+automatic request for user input. Record a newly discovered dependency before continuing dependent work.
+
+Do not deploy, enable tenants, mutate production or update external trackers without authorization.
+Do not amend a reviewed implementation solely to record its SHA; use a small coordination follow-up
+when the repository requires immutable commit references. Maintain handoffs at ownership changes,
+meaningful pauses, blockers and completion, rather than rewriting them after every tool call.

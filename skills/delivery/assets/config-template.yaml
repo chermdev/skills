@@ -124,6 +124,13 @@ verification:
   review_severities: [p0, p1, p2, p3]
   blocking_review_severities: [p0, p1]
   reviews:
+    selection: changed_behavior_and_failure_impact
+    recursive_delegation: false
+    reuse_evidence_for_unchanged_code_and_environment: true
+    low_risk:
+      match_all: [localized_and_reversible, established_contract, no_critical_behavior_change]
+      stage_1: [implementation_owner_self_review]
+      stage_2: []
     default:
       stage_1: [implementation_owner_self_review]
       stage_2: [qa]

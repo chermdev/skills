@@ -143,9 +143,12 @@ falls back to serial dependency/priority order until a new freeze is approved.
 
 ### Review and completion
 
-Define review severities and blocking levels in `config.yaml`. A default low-risk feature may use
-owner self-review plus independent QA. Finance, auth, security, or similarly consequential work
-should require architecture/domain review followed by independent QA. `in_review -> completed`
+Define review severities and blocking levels in `config.yaml`. A localized, reversible change on an
+established contract with no finance/auth/security behavior change may use owner verification.
+Substantial features use owner review plus independent QA. Changes to financial calculations or
+persistence, authorization/security boundaries, or similarly consequential contracts require
+architecture/domain review followed by independent QA. A UI label in a finance app is not by itself
+a critical-domain change. Reviewers inspect a bounded diff and do not delegate further by default. `in_review -> completed`
 requires the definition of done, verification, every required review stage, and zero blocking findings.
 
 ### Rollout state

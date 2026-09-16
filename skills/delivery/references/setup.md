@@ -94,3 +94,12 @@ Setup is complete when:
 - generated files resolve and no existing state was silently overwritten;
 - the dashboard can distinguish imported intake from executable work;
 - the user can continue with `$delivery plan`, or with `$delivery next` only when an approved feature already exists.
+
+## Keep the installation maintainable
+
+Use one canonical copy of each custom skill. Point a personal installation at its maintained source
+when supported, rather than creating another editable copy. For existing repositories, inspect local
+overrides before applying global defaults; preserve project safety and domain constraints. Consolidate
+duplicate workflow triggers and retain long reference material outside automatically loaded instructions.
+Do not install an additional orchestration skill to restate these defaults. Validate from a fresh task
+so cached instructions do not conceal a configuration conflict.

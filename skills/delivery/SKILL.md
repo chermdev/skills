@@ -1,6 +1,6 @@
 ---
 name: delivery
-description: Inspect, set up, migrate, groom, plan, execute, or audit multi-session software delivery using portfolio horizons, outcome plans, vertical features, task-level implementation detail, explicit ownership, dependency-aware WIP, QA/review gates, durable checkpoints, and rollout tracked separately. Use whenever work spans sessions, contains several tickets or features, needs tracker reconciliation, or asks what should be built next; deployment-only and ordinary single-session changes use other workflows.
+description: Plan, execute, resume, or audit structured multi-session delivery with feature ownership and durable handoffs. Use for delivery plans and tracker reconciliation; handle ordinary fixes and standalone reviews directly.
 ---
 
 # Delivery
@@ -21,9 +21,17 @@ The user only needs to remember `$delivery`. Infer a mode from natural language 
 
 ## Enter the repository contract
 
-Read the nearest `AGENTS.md`, then the configured delivery manifest or planning document it points to. Preserve existing paths, trackers, statuses, and local verification rules; the repository contract overrides this skill's defaults.
+Use the applicable `AGENTS.md` already in context, then read the delivery manifest or planning entrypoint it identifies. Read the selected mode reference once; reopen only changed or newly relevant sections. Preserve existing paths, trackers, statuses, and local verification rules; the repository contract overrides this skill's defaults.
 
 If no contract exists, run setup only when the user asks to configure delivery or requests structured multi-session planning. Do not scaffold planning files for an ordinary change.
+
+## Proportionate execution
+
+- Keep one coordinator and one writer per feature; honor the user-selected task topology. Delegation must answer a bounded independent question, not reproduce the owner’s full workflow. Reviewers do not delegate further by default.
+- The coordinator checks eligibility and rollups; a feature owner needs its canonical feature, relevant contracts and scoped instructions, not the entire portfolio.
+- Select verification and review by changed behavior and failure impact. Preserve stronger repository gates, but do not infer a security review merely from working in an app that handles money.
+- Use existing evidence for unchanged code and environment; after fixes, verify the affected invariant and expand only for a stated regression risk.
+- When repeated attempts produce no new evidence or implementation progress, narrow the hypothesis, change tools, or separate newly discovered scope. Do not add more agents or effort without a specific reason.
 
 ## Invariants
 
