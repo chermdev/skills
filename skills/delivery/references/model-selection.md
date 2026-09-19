@@ -57,17 +57,35 @@ continue independent planning. Missing execution metadata alone does not change 
 
 ## Apply at execution
 
-Read the canonical recommendation again before dispatch. Revalidate availability on the target
-host and respect the user's requested task topology. Create separate tasks or delegate only when
-authorized by the user and governing instructions; this skill's metadata grants neither action.
+This is a mandatory gate before creating or resuming a feature task, including follow-up fixes
+and authorized reviewer assignments. The coordinator MUST:
 
-Use the callable tool's current schema. For example, Codex separate-task tools may accept
-`model` and `thinking`, while a subagent tool may accept `model` and `reasoning_effort`.
-These are tool-specific mappings; verify them before calling. Never send null placeholders as
-literal model IDs, guess flags, or claim that editing frontmatter changed the current agent.
+1. Read the canonical feature's model and effort. Resolve the effective pair from explicit user
+   instructions first, then repository policy and the feature recommendation. Recommendations
+   do not themselves authorize a tool override, task creation or delegation; honor the callable
+   tool's authorization requirements. Resolve an authorization conflict before dependent execution.
+2. Verify the exact model identifier and supported effort on the target host. Do not silently
+   substitute a more capable model, raise effort, or accept a host default. When medium fits an
+   established contract, do not select high merely because the feature spans several files.
+3. Apply BOTH values through the host's supported controls. For example, separate-task tools may
+   require `model` and `thinking`; subagent tools may require `model` and `reasoning_effort`.
+   When those fields are supported and authorized, MUST send them explicitly on creation and
+   follow-up dispatch. Never assume the parent task, existing task or Markdown sets them.
+   If a full-history fork disallows overrides, use an authorized context mode that accepts the
+   pair and include the necessary bounded context; do not drop the settings to keep the fork.
+4. Check the dispatch result and record the task identifier, requested pair, applied pair when
+   confirmed, and any explicit override in the feature checkpoint. A successful explicit setter
+   without readback is evidence of an accepted setting request; record that limit without claiming
+   an independently observed runtime setting. Reconcile a reported mismatch before implementation.
 
-If a recommendation is unavailable, use an already authorized fallback and record the actual
-setting and reason. Otherwise surface the mismatch before dependent execution; continue any
-independent planning. If the host cannot expose or change the current model/effort, record the
-limitation rather than claim the recommendation was applied. Do not silently change an explicit
-user selection. Keep the recommendation and actual execution record distinct.
+If the host lacks a control or the selected pair is unavailable, use only a fallback already
+explicitly authorized by the user/repository and record its exact pair and reason. Otherwise
+surface the concrete mismatch and request only the missing choice/authorization; keep progressing
+on independent preparation. Writing "inherited", "unknown", or "host limitation" does not by
+itself permit feature execution under unresolved settings. An unavailable effort control can be
+recorded as not applicable only when that model/configuration is explicitly permitted.
+
+Keep recommendations and actual execution history distinct. A later correction applies to future
+work in the existing task; preserve completed work and do not rewrite its historical settings.
+Editing frontmatter never changes the current agent. Never send null placeholders as literal
+model IDs or invent unsupported flags.

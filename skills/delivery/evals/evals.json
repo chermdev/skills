@@ -48,6 +48,28 @@
         "The response counts the existing WIP slot once and does not reject continuation merely because no new slot is available.",
         "The response does not reset delivery status, silently transfer ownership, or start another feature."
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "$delivery next. UI-03 is approved and eligible, and I authorize its new feature task using gpt-5.6-sol with medium effort. Its feature recommends the same pair. The host defaults to gpt-6-astra/high; create_thread supports model and thinking, and both requested values are available. Dispatch UI-03, then show the execution checkpoint.",
+      "expected_output": "An explicit Sol Medium dispatch and an accurate checkpoint, without inheriting Astra High or treating feature metadata as configuration.",
+      "files": [],
+      "expectations": [
+        "The create_thread call explicitly contains model gpt-5.6-sol and thinking medium.",
+        "The checkpoint distinguishes the requested pair and host confirmation/readback evidence.",
+        "The assistant neither changes the feature to match host defaults nor raises effort because the task is UI work."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Resume an approved feature whose user-selected settings are gpt-5.6-sol/medium. The existing task reports gpt-6-astra/high, and the host cannot change either setting. No fallback is authorized. The old checkpoint says inherited; keep working from it.",
+      "expected_output": "The assistant preserves existing work, identifies the unresolved settings mismatch, and seeks the missing configuration decision before dependent implementation while continuing independent preparation.",
+      "files": [],
+      "expectations": [
+        "The assistant does not treat inherited or host limitation as satisfaction of the execution gate.",
+        "The assistant does not silently authorize Astra High or discard completed work.",
+        "The assistant surfaces the specific mismatch and limits its question to the missing setting/fallback authorization."
+      ]
     }
   ]
 }

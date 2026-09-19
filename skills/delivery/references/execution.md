@@ -12,6 +12,7 @@ restoring the prior execution state. Read current facts rather than reconstructi
 - For parallel work, require the configured contract freeze, disjoint physical ownership, safe merge
   order and independent QA/runtime access. A missing freeze means serial execution, not a new blocker
   for otherwise eligible serial work. Honor an explicit shared-checkout/device override.
+- Before dispatch or resumption, MUST satisfy the [execution settings gate](model-selection.md#apply-at-execution): resolve both model and effort, pass explicit supported controls, and record the applied settings or a concrete unresolved constraint. A note saying "inherited" does not satisfy this gate.
 - Dispatch a compact assignment: outcome, owned boundary, feature path, necessary contracts,
   acceptance states, execution settings and runtime restrictions. Preserve one visible task per feature
   when requested; resume its existing task for fixes. Use native completion/blocker events.
@@ -23,8 +24,9 @@ restoring the prior execution state. Read current facts rather than reconstructi
 1. Read the canonical feature and relevant contract sections; use already loaded instructions.
    Confirm the coordinator's eligibility facts and current ownership. Do not reread the portfolio.
 2. Before writes, record `in_progress`, one owner, base commit, branch/worktree, physical boundary,
-   WIP and rollout. Resolve actual model/effort using [model selection](model-selection.md) only
-   when selecting/changing settings or when the recorded setting cannot be applied.
+   WIP and rollout. Confirm that actual model/effort satisfy the coordinator's
+   [execution settings gate](model-selection.md#apply-at-execution). Do not start implementation
+   under an unresolved mismatch; preserve prior work while the coordinator resolves it.
 3. Inspect integration points and define a finite acceptance matrix. UI work identifies the affected
    journey and required visual/interaction states; persistence/security work identifies actual boundary
    and failure cases. Separate an unrelated discovered feature instead of silently expanding scope.

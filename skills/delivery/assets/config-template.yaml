@@ -143,7 +143,7 @@ verification:
 
 model_selection:
   policy: repository_or_user_defined
-  fallback: current_host_default
+  fallback: explicitly_authorized_only
 
 rollout:
   explicit_authorization: true
