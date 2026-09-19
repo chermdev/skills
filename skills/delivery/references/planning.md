@@ -38,6 +38,26 @@ Do not manufacture acceptance criteria or feature boundaries from a vague tracke
 8. Present the proposed feature sequence and unresolved decisions to the user. Keep the plan `status: proposed` and features `status: not_started`; planning remains `ready_for_approval` until the user approves scope. Approval changes `planning_state` to `approved` without pretending execution started.
 9. Activate a plan only after portfolio priority is reconciled, its planning is approved, and a plan owner is assigned. Then make only the first dependency-ready feature eligible by approving its planning and assigning its write owner/boundary. Do not bulk-promote every downstream feature.
 
+## Short tasks and coherent batches
+
+Keep the feature as a vertical outcome; divide its implementation into short, independently
+checkable task batches, not separate horizontal features or a new agent for each step. Each batch
+states its result, owned component/function boundary, dependencies and finishing check. Prefer a
+batch that fits one focused session with only its feature and relevant contracts in context; do
+not promise a fixed duration or token budget without evidence.
+
+Before dispatch, compare adjacent batches for shared files, components, consumers and test setup.
+Combine closely related changes when one owner can implement and verify them together. For example,
+update a shared selector and its already-approved consumers in one coherent pass instead of sending
+successive agents to restyle the same primitive. Keep separate domain outcomes and risky changes
+separate; do not pull future unapproved work into a batch. Honor the repository's task topology and
+one-writer rule; an implementation checklist does not authorize additional visible tasks.
+
+Order quick wins by user value and dependency readiness, not just ease. If a batch requires open-ended
+investigation, separate that investigation from the known implementation and state the question and
+exit condition. Reuse the same owner for related fixes. Prepare one coherent reviewable candidate per
+batch and reuse its checks; avoid coordination commits, handoffs and full reviews for every small edit.
+
 Review recommendations after grooming or material scope changes without changing approval or rollout state. Keep frontmatter canonical; plan tables may summarize it. Follow the repository's documentation language, including frontmatter prose and rationales.
 
 Use `assets/plan-template.md` and `assets/feature-template.md` when creating a new contract. Adapt validation and rollout sections to the stack; do not impose browser or database checks on work that does not have those surfaces.

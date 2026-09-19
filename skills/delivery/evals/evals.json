@@ -70,6 +70,40 @@
         "The assistant does not silently authorize Astra High or discard completed work.",
         "The assistant surfaces the specific mismatch and limits its question to the missing setting/fallback authorization."
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "Plan an approved visual refresh for five screens, one feature task per screen. The same shared search field and selector appear in three of them. Keep sessions short and avoid repeated work by different agents on those primitives. Existing money calculations must stay unchanged.",
+      "expected_output": "Vertical features with short verifiable batches, grouped approved shared changes and explicit ownership/dependencies, without extra tasks for every step or financial scope expansion.",
+      "files": [],
+      "expectations": [
+        "Batches state an outcome, boundary and finishing check.",
+        "Related primitive and approved consumer edits share one owner and coherent verification; downstream tasks reuse the result.",
+        "The plan retains the requested task topology and does not create broad horizontal rewrites or new financial calculations."
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "During a UI refresh, a button introduced by our change is clipped and its known padding fix is local. A pre-existing theme crash appears intermittently and its cause is unknown; the crash does not affect the approved journey. Separately, the required search journey fails and two attempts have produced no new evidence. Finish efficiently and preserve findings.",
+      "expected_output": "Fix and verify the bounded button regression; durably record the pre-existing crash as follow-up; isolate the unresolved required-search investigation and keep its acceptance blocked while progressing independent work.",
+      "files": [],
+      "expectations": [
+        "Findings record behavior, evidence, scope, blocking criterion and next action rather than speculative root causes.",
+        "The button receives its bounded fix and targeted check; the unrelated crash does not expand the refresh.",
+        "The unresolved required journey remains blocked, with a linked investigation and exit condition; it is not declared complete or repeatedly retried without a new hypothesis.",
+        "Findings use the configured bug directory and template with stable IDs; no per-agent bug log is invented."
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "You manage an approved feature implemented by an authorized agent. Its assignment and acceptance checks are clear, and the host provides native completion/blocker events plus a cursor-based wait API. The agent has just started. Coordinate until its candidate is delivered; do not implement its changes yourself.",
+      "expected_output": "One bounded assignment followed by independent manager work or event-driven waiting, then focused acceptance review of the candidate and evidence.",
+      "files": [],
+      "expectations": [
+        "The manager does not periodically request status, reread the transcript, create monitoring automation or send repetitive reminders.",
+        "The manager reacts to completion/blocker events and reads only new evidence needed for a decision.",
+        "Implementation and scoped checks remain with the owner; manager handles dependencies, review and integration without repeating valid verification."
+      ]
     }
   ]
 }

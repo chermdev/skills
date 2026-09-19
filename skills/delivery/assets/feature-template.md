@@ -41,7 +41,10 @@ State one independently valuable outcome and who notices it.
 State the exact dependency completion condition. Treat `parallelizable_with` as candidate
 compatibility; link an approved freeze record before parallel execution.
 
-## Implementation steps
+## Short implementation batches
+
+List finishable batches as outcome, owned boundary, dependency and finishing check. Group related
+primitive/consumer changes under the same owner; these are not automatically separate agent tasks.
 
 ## Business and security rules
 
@@ -72,5 +75,5 @@ compatibility; link an approved freeze record before parallel execution.
 - Checks:
 - Review:
 - Rollout state:
-- Follow-up debt:
+- Bugs/follow-ups: linked record, blocking criterion or nonblocking rationale, evidence and next action/owner.
 - Evidence record:

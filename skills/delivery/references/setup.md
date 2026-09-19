@@ -49,7 +49,7 @@ After the user approves the routing and local rules:
 
 1. Create or update `.github/plans/config.yaml` from `assets/config-template.yaml`.
 2. Generate a short `.github/plans/README.md` from `assets/readme-template.md`; keep generic behavior in this skill.
-3. Create missing `INDEX.md`, `handoff.md`, plan/feature/freeze templates, and optional legacy/evidence records from `assets/`.
+3. Create missing `INDEX.md`, `handoff.md`, plan/feature/freeze templates, and optional legacy/evidence records from `assets/`. Configure `paths.bugs` and `paths.bug_template` once using [bug records](bugs.md); install `assets/bug-template.md` at the configured template path. Preserve any existing explicit bug schema/authority.
 4. Add one concise pointer to the nearest agent instruction file. Preserve its existing product and verification rules.
 5. Migrate existing state only when approved. Link instead of copying checklists.
 6. Create tracker projects, states, labels, or issues only when explicitly authorized and the configured provider is available.

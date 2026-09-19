@@ -19,6 +19,45 @@ restoring the prior execution state. Read current facts rather than reconstructi
 - Verify the returned commit, acceptance evidence and limitations. Reopen only a disputed claim or
   missing requirement; do not repeat the owner's entire discovery and QA. Update minimal rollups.
 
+## Manager and implementation agents
+
+The coordinator acts as manager; the assigned feature owner is the implementation agent. Use this
+split when the user/repository authorizes delegation, retaining its selected task topology. It does
+not require extra agents for a bounded edit or authorize a new visible task for every batch.
+
+| Role | Responsibility |
+| --- | --- |
+| Manager | Select ready work, group related batches, resolve model/effort, assign one writer and runtime ownership, clarify acceptance, track dependencies/blockers, review delivered evidence, integrate accepted changes and update canonical rollups. |
+| Implementation agent | Read its bounded assignment, implement within ownership, run required scoped checks, record bugs, fix bounded in-scope findings and deliver a coherent candidate with evidence and remaining limitations. |
+| Reviewer, only when required | Read the fixed candidate and existing evidence, verify the assigned risk independently and report actionable findings. No code writes or recursive delegation by default. |
+
+The manager MUST avoid duplicating the owner's implementation, exploration or passing tests. Review
+what changed against acceptance, inspect relevant evidence and request only missing evidence or
+specific corrections. Keep fixes with the same owner. The manager may run an integration check when
+combining changes introduces a concrete risk; do not repeat the full verification merely on handoff.
+
+### Event-driven coordination
+
+- Dispatch one self-contained assignment, then let the agent work. Use native completion,
+  needs-input and blocker notifications to resume coordination. When the host requires waiting,
+  use its bounded event-wait API and latest cursor; do not poll transcript/status on a timer.
+- While waiting, perform useful independent manager work. If none remains, wait or yield using
+  the host's supported continuation mechanism. Do not create heartbeat automations, extra workers
+  or recurring status messages merely to monitor an already running assignment.
+- A notification is a reason to inspect the new result, not to replay the task history. Read the
+  compact completion summary, candidate revision, checks and blockers; open detail only to resolve
+  a specific gap. Do not repeatedly acknowledge unchanged progress or narrate unchanged waits.
+- Send a message when it changes the assignment: new user constraints, a dependency becoming ready,
+  a concrete blocker, a review finding or an ownership/runtime handoff. Do not send routine
+  "are you done?", status requests or reminders of instructions already received.
+- Owners report completion or an actionable blocker through the native event mechanism. If the host
+  lacks one, agree on one compact completion/blocker handoff; only inspect status for a user request,
+  suspected delivery failure or recovery after interruption. Do not combine event waits with a
+  second manual polling loop.
+- User-facing updates remain concise and meaningful: an accepted result, material risk, scope
+  decision or required input. Follow host communication requirements without turning internal
+  coordination into a running transcript.
+
 ## Feature owner
 
 1. Read the canonical feature and relevant contract sections; use already loaded instructions.
@@ -47,6 +86,32 @@ restoring the prior execution state. Read current facts rather than reconstructi
    are resolved. Keep rollout separate and normally `gated`; completion does not authorize deployment.
 9. Report completion or a concrete blocker, release ownership/runtime and update the short handoff.
    Bulky logs and historical attempts stay in linked evidence, not in the executable feature contract.
+
+## Discovered bugs and bounded investigation
+
+Record a discovered bug before leaving it behind using the mandatory [bug record structure](bugs.md)
+and the repository's configured bug directory/template, with a stable reference. Include observed versus expected behavior, reproduction
+or evidence/revision, affected boundary, whether it blocks a named acceptance criterion, and the
+next action/owner (or explicitly unassigned). Distinguish observations from an unverified cause;
+link existing reports instead of duplicating them. External tracker writes still need authorization.
+
+- **Blocking, with an established local cause and bounded remedy:** fix within the existing owner
+  boundary when authorized, then recheck the failed criterion and affected consumers. "Quick" means
+  a concrete fix with a clear check, not a guess that an investigation will be short.
+- **Blocking, requiring investigation or wider scope:** preserve the candidate and create a linked
+  future investigation record with the open question, evidence already gathered and a stop/exit
+  condition. Mark the affected task blocked under the repository's workflow. Continue independent
+  accepted batches, but do not claim the blocked feature complete or silently weaken acceptance.
+- **Nonblocking or pre-existing outside scope:** record a follow-up and continue the agreed outcome.
+  Do not turn a visual change into a general accessibility, theme or financial-system audit. A defect
+  introduced by the current change must be resolved or the offending change removed; do not relabel
+  it as unrelated debt merely to finish.
+
+After an attempt that adds no evidence, narrow the question or change the method before retrying.
+When the next step is open-ended research rather than a bounded correction, stop expanding the batch
+and use the triage above. Reuse passing evidence for unchanged code/environment; escalate checks or
+review only for a concrete affected invariant. Keep the handoff to completed batches, the current
+next action and links to deferred findings, not a transcript of the investigation.
 
 If attempts repeat without a changed implementation, new evidence or a narrower hypothesis, reassess
 the boundary and approach. A checkpoint is a reason to change strategy, not a blind token cap or an

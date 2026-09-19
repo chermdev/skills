@@ -12,6 +12,8 @@ paths:
   index: INDEX.md
   handoff: handoff.md
   archive: archive
+  bugs: bugs
+  bug_template: templates/bug.md
   legacy_backlog: null
 
 tracking:
@@ -69,6 +71,8 @@ execution:
     - independently_verifiable_qa
 
 states:
+  bug_status:
+    allowed: [open, investigating, deferred, resolved, dismissed]
   plan_status:
     allowed: [proposed, active, blocked, completed, canceled, superseded]
     normal_flow: [proposed->active, active->completed]

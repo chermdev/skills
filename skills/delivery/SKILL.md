@@ -27,7 +27,10 @@ If no contract exists, run setup only when the user asks to configure delivery o
 
 ## Proportionate execution
 
+- Coordinate through native completion/blocker events, not repeated status messages or transcript polling. The manager assigns, reviews and integrates; implementation agents own changes and scoped verification. See [role boundaries and event-driven coordination](references/execution.md#manager-and-implementation-agents).
 - Keep one coordinator and one writer per feature; honor the user-selected task topology. Delegation must answer a bounded independent question, not reproduce the owner’s full workflow. Reviewers do not delegate further by default.
+- Prefer short, finishable task batches inside each vertical feature. Group changes that share a component, context and acceptance journey under one owner; do not create another task or reviewer for every implementation step.
+- Record discovered bugs using the configured [bug directory and template](references/bugs.md), never a new structure per agent, and triage them against the current acceptance criteria. Fix a blocker inline only when its cause and bounded remedy are established; defer uncertain investigation without declaring the blocked outcome complete.
 - The coordinator checks eligibility and rollups; a feature owner needs its canonical feature, relevant contracts and scoped instructions, not the entire portfolio.
 - Select verification and review by changed behavior and failure impact. Preserve stronger repository gates, but do not infer a security review merely from working in an app that handles money.
 - Use existing evidence for unchanged code and environment; after fixes, verify the affected invariant and expand only for a stated regression risk.
