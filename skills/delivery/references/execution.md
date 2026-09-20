@@ -42,6 +42,9 @@ Before claiming a cause or assigning a specific correction, inspect evidence tha
 A user's symptom is sufficient to investigate, not proof of a root cause. Separate observed facts
 from hypotheses; when evidence is missing, assign a bounded diagnosis rather than a speculative
 fix. Recheck the affected target when the user corrects which screen or component they meant.
+For a visual defect, inspect component parameters, inherited styles and wrappers before
+expanding the fix into a dependency upgrade or architectural replacement. Preserve the
+requested integration; a similar appearance does not establish equivalent behavior.
 
 For visual delivery, the manager MUST inspect the actual rendered candidate against the approved
 reference and relevant sibling screens before accepting it. Passing tests and an owner's summary
