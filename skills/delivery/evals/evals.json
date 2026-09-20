@@ -104,6 +104,29 @@
         "The manager reacts to completion/blocker events and reads only new evidence needed for a decision.",
         "Implementation and scoped checks remain with the owner; manager handles dependencies, review and integration without repeating valid verification."
       ]
+    },
+    {
+      "id": 10,
+      "prompt": "An agent says a two-screen redesign is complete: tests pass and both screens now show their section gradients. The approved sibling screen has a subtle short gradient. The user reports that Activity and Gastavo look inconsistent, correcting an earlier mention of Home. You have current captures and the shared theme resolver. Review and direct the next step.",
+      "expected_output": "The manager inspects the correct two rendered views against the approved sibling/reference, distinguishes observed mismatch from cause, then assigns a bounded evidenced correction without auditing unrelated screens.",
+      "files": [],
+      "expectations": [
+        "The manager does not accept the design solely from tests or the agent summary.",
+        "The manager compares falloff/intensity and shared treatment, not only gradient presence/hue.",
+        "The manager verifies the corrected targets and evidence before asserting a cause or directing a fix."
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "You coordinate a visual feature. Its owner has found three related small corrections locally and asks you to stage the first immediately. Native checks are only available in your shared checkout. Later, the agreed contextual menu fails, but direct buttons work; an unrelated pre-existing scroll quirk also remains. The user wants uncertain investigations deferred. Decide the handoff and completion state.",
+      "expected_output": "Group the known local corrections into one candidate, stage for the necessary bounded native check, and distinguish a deliverable fallback from the unmet menu criterion and unrelated nonblocking bug.",
+      "files": [],
+      "expectations": [
+        "The manager requests a coherent candidate rather than staging each known one-line correction separately, without demanding another runtime or duplicate tests.",
+        "Staging for native evidence is distinguished from final acceptance/integration.",
+        "The contextual-menu criterion remains recorded and blocks full feature acceptance unless an authorized scope change removes it.",
+        "The unrelated scroll bug is recorded for later and does not itself block the agreed outcome."
+      ]
     }
   ]
 }

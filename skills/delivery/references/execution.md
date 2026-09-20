@@ -36,6 +36,30 @@ what changed against acceptance, inspect relevant evidence and request only miss
 specific corrections. Keep fixes with the same owner. The manager may run an integration check when
 combining changes introduces a concrete risk; do not repeat the full verification merely on handoff.
 
+### Evidence before direction and acceptance
+
+Before claiming a cause or assigning a specific correction, inspect evidence that supports it.
+A user's symptom is sufficient to investigate, not proof of a root cause. Separate observed facts
+from hypotheses; when evidence is missing, assign a bounded diagnosis rather than a speculative
+fix. Recheck the affected target when the user corrects which screen or component they meant.
+
+For visual delivery, the manager MUST inspect the actual rendered candidate against the approved
+reference and relevant sibling screens before accepting it. Passing tests and an owner's summary
+do not establish visual consistency. Reuse existing captures when their source and configuration
+still apply; otherwise request only the missing affected view. Compare the shared treatment as well
+as the presence of elements (for example, gradient falloff/intensity as well as hue). This is a
+focused acceptance check, not permission for a new all-screen or accessibility audit.
+
+### Coherent candidate handoffs
+
+The owner finishes the available local review and groups related known corrections before requesting
+staging or integration. Do not hand off every one-line edit separately. Distinguish staging for a
+required shared-runtime check from accepting/integrating a completed candidate. When the owner
+cannot run that check locally, a staging request is justified; group the findings from that bounded
+journey into the next candidate and recheck only the affected claims. Do not require a second server,
+full test rerun or fresh reviewer merely to reduce handoffs, and do not delay a real blocker report
+while polishing unrelated details.
+
 ### Event-driven coordination
 
 - Dispatch one self-contained assignment, then let the agent work. Use native completion,
@@ -106,6 +130,14 @@ link existing reports instead of duplicating them. External tracker writes still
   Do not turn a visual change into a general accessibility, theme or financial-system audit. A defect
   introduced by the current change must be resolved or the offending change removed; do not relabel
   it as unrelated debt merely to finish.
+
+A functional fallback is not automatically acceptance of the requested behavior. If direct buttons
+work but the approved single menu does not, record the working delivery separately from that unmet
+criterion. Preserve the remaining requirement and its linked bug; keep the affected feature blocked
+or partially accepted under the repository's existing states. Only an explicit authorized scope
+change can remove the criterion. A deferred nonblocking bug need not prevent completion of the
+agreed outcome, but an unmet agreed criterion still does. Do not invent a new status or silently
+mark the whole plan complete because the fallback was integrated.
 
 After an attempt that adds no evidence, narrow the question or change the method before retrying.
 When the next step is open-ended research rather than a bounded correction, stop expanding the batch
