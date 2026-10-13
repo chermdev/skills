@@ -1,0 +1,4 @@
+interface:
+  display_name: "Delivery Execute"
+  short_description: "Coordinate approved features through completion"
+  default_prompt: "Use $delivery-execute to coordinate the approved delivery sequence using the configured separate feature tasks, explicit model and effort, and completion events; prepare unresolved readiness gaps before implementation."

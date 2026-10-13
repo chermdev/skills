@@ -19,6 +19,12 @@ restoring the prior execution state. Read current facts rather than reconstructi
 - Verify the returned commit, acceptance evidence and limitations. Reopen only a disputed claim or
   missing requirement; do not repeat the owner's entire discovery and QA. Update minimal rollups.
 
+## Task topology
+
+Honor the repository topology within host rules and user authorization. When separate user-visible tasks are authorized, retain one task identifier per feature and resume it for fixes. Never silently replace requested visible tasks with hidden subagents or duplicate owners. Configuration alone does not override host authorization requirements; report an unsupported topology before dispatch.
+
+The calling coordinator's model is separate from feature settings. Reading a skill cannot change it. An unavailable requested feature model/effort is a dispatch constraint, not permission to substitute another model; follow the settings gate above.
+
 ## Manager and implementation agents
 
 The coordinator acts as manager; the assigned feature owner is the implementation agent. Use this

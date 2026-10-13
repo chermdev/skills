@@ -16,12 +16,13 @@ Use canonical records for details. Surface an obvious rollup mismatch as a warni
 
 End with a numbered menu. Accept a number or natural-language follow-up:
 
-1. List horizons, plans, and features
-2. Configure or import tracking
-3. Groom or shape a plan
-4. Execute the next feature
-5. Audit delivery state
-6. Show help
+1. Review readiness — `$delivery-review`
+2. Groom or shape a plan — `$delivery-plan`
+3. Execute an approved sequence — `$delivery-execute`
+4. List horizons, plans and features — `$delivery list`
+5. Configure or import tracking — `$delivery setup`
+6. Audit delivery state — `$delivery audit`
+7. Show help — `$delivery help`
 
 ## List
 
@@ -33,4 +34,12 @@ Prefer a compact table. Read feature frontmatter when the requested detail is no
 
 ## Help
 
-Explain that natural language is the primary interface and show only the public modes: `$delivery`, `list`, `setup`, `plan`, `next`, `audit`, and `help`. Mention `$delivery handoff` only under advanced recovery for an explicit pause, transfer, or repair.
+Present the three autocomplete entry points as the primary workflow:
+
+- `$delivery-review`: optional read-only readiness assessment.
+- `$delivery-plan`: prepare or revise the plan and resolve discoverable gaps.
+- `$delivery-execute`: preflight and coordinate approved features; prepare authorized gaps or surface required decisions before proceeding.
+
+They load shared Delivery automatically; users need not invoke it first or invoke all three in order. Natural-language requests may select a relevant skill when implicit invocation is enabled; explicit autocomplete selection makes the intended mode unambiguous. Skills do not run independently in the background.
+
+Use `$delivery` directly for the dashboard, `list`, `setup`, `audit` and `help`. Preserve `review`, `plan` and `run` as compatible mode aliases and `next` for one eligible feature. Mention `handoff` only for advanced recovery after a pause, ownership transfer or stale checkpoint.

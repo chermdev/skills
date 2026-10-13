@@ -26,6 +26,10 @@ For a plan with `planning_state: intake` or `needs_grooming`:
 
 Do not manufacture acceptance criteria or feature boundaries from a vague tracker title. Keep the plan `proposed`; use `planning_state: needs_grooming` while material uncertainty remains. Set `planning_state: ready_for_approval` only when the outcome, decisions, vertical sequence, dependencies, ownership strategy, and verification expectations are reviewable.
 
+## Bounded preparation
+
+Use [readiness](readiness.md) as the shared assessment and decision/spike contract. In this mode, carry out only authorized preparation and update canonical plans with the result. Keep prototype evidence separate from accepted implementation. An inconclusive spike leaves a named uncertainty; it does not expand indefinitely. Preparation does not approve product decisions or start a feature.
+
 ## Shape vertical features
 
 1. Search the plan index, plan folders, legacy backlog, technical contracts, and durable decisions for overlap. Extend an overlapping plan instead of duplicating it.

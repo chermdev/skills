@@ -1,0 +1,4 @@
+interface:
+  display_name: "Delivery Review"
+  short_description: "Assess plan readiness and unresolved decisions"
+  default_prompt: "Use $delivery-review to review the current delivery plan read-only and report readiness, decisions and required spikes."

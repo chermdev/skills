@@ -1,0 +1,4 @@
+interface:
+  display_name: "Delivery Plan"
+  short_description: "Groom plans into bounded executable features"
+  default_prompt: "Use $delivery-plan to groom the current delivery plan, resolve discoverable gaps and identify decisions required before execution."

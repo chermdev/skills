@@ -4,6 +4,11 @@ A canonical collection of independent Agent Skills.
 
 - [`apple-hig`](skills/apple-hig/SKILL.md): Find and apply live Apple Human Interface Guidelines using a linked topic directory, navigation guidance, and checks for relevant changes.
 - [`delivery`](skills/delivery/SKILL.md): A structured workflow for multi-session software delivery.
+- [`delivery-review`](skills/delivery-review/SKILL.md): Read-only plan readiness, decisions and spikes.
+- [`delivery-plan`](skills/delivery-plan/SKILL.md): Groom plans and perform bounded preparation.
+- [`delivery-execute`](skills/delivery-execute/SKILL.md): Coordinate approved features and continue after verified completion.
+
+The three autocomplete entry points require `delivery`, which owns their shared rules. Models, effort, task topology and authorization remain repository-specific.
 - [`opengraph-design`](skills/opengraph-design/SKILL.md): Design branded social preview images using existing site assets, deliberate composition, and verified metadata.
 
 ## Choose one installation mode
@@ -17,6 +22,8 @@ Use the open Agent Skills CLI when you want individual skills that you can inspe
 ```bash
 npx skills@latest add chermdev/skills --list
 npx skills@latest add chermdev/skills --skill delivery
+# Optional autocomplete entry points; keep delivery installed alongside them.
+npx skills@latest add chermdev/skills --skill delivery-review delivery-plan delivery-execute
 ```
 
 `skills` 1.5.23 has an upstream parsing bug in the equals-sign form: `--skill=delivery` is accepted but can select every skill. Use the documented space-separated form above to select an individual skill.
