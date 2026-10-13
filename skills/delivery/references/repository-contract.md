@@ -151,6 +151,11 @@ architecture/domain review followed by independent QA. A UI label in a finance a
 a critical-domain change. Reviewers inspect a bounded diff and do not delegate further by default. `in_review -> completed`
 requires the definition of done, verification, every required review stage, and zero blocking findings.
 
+`verification.test_first` optionally lists domains whose behavior must be specified by a failing test
+before implementation (for example money arithmetic, installment schedules or authorization rules).
+Keep it narrow: name calculation and boundary logic, not every file in a critical area. Absent the
+key, test order is the implementer's choice.
+
 ### Rollout state
 
 - `not_applicable`: no independent exposure.

@@ -104,6 +104,9 @@ while polishing unrelated details.
    and failure cases. Separate an unrelated discovered feature instead of silently expanding scope.
 4. Implement the smallest complete outcome. Batch independent reads and checks; return targeted
    excerpts and failure summaries. Keep full logs and captures in artifacts. Preserve unrelated work.
+   When the change touches a configured `verification.test_first` domain, first add a test for the
+   acceptance case and confirm it fails for the expected reason, then implement until it passes.
+   Record that red-to-green sequence as evidence. Elsewhere, choose test order by convenience.
 5. Run the repository's required checks for the changed behavior. Reuse the existing runtime. Prepare
    short UI action sequences and inspect meaningful transitions, final states and failures; do not
    capture/dump the entire interface after every action. Respect an explicit tool preference.
